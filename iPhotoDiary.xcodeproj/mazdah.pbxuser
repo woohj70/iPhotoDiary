@@ -1,0 +1,896 @@
+// !$*UTF8*$!
+{
+	1D3623240D0F684500981E51 /* iPhotoDiaryAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1177, 693}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1813}";
+		};
+	};
+	1D3623250D0F684500981E51 /* iPhotoDiaryAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1041, 4030}}";
+			sepNavSelRange = "{4265, 506}";
+			sepNavVisRange = "{878, 1594}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* iPhotoDiary */ = {
+		activeExec = 0;
+		executables = (
+			E7455DB8122D65B500B19CB2 /* iPhotoDiary */,
+		);
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Release;
+		activeExecutable = E7455DB8122D65B500B19CB2 /* iPhotoDiary */;
+		activeSDKPreference = iphoneos4.1;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* iPhotoDiary */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* iPhotoDiary */,
+		);
+		codeSenseManager = E7455DD1122D65D500B19CB2 /* Code sense */;
+		executables = (
+			E7455DB8122D65B500B19CB2 /* iPhotoDiary */,
+		);
+		perUserDictionary = {
+			"PBXConfiguration.PBXBreakpointsDataSource.v1:1CA1AED706398EBD00589147" = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXBreakpointsDataSource_BreakpointID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					20,
+					198,
+					20,
+					99,
+					99,
+					29,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXBreakpointsDataSource_ActionID,
+					PBXBreakpointsDataSource_TypeID,
+					PBXBreakpointsDataSource_BreakpointID,
+					PBXBreakpointsDataSource_UseID,
+					PBXBreakpointsDataSource_LocationID,
+					PBXBreakpointsDataSource_ConditionID,
+					PBXBreakpointsDataSource_IgnoreCountID,
+					PBXBreakpointsDataSource_ContinueID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					708,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 310583424;
+			PBXWorkspaceStateSaveDate = 310583424;
+		};
+		perUserProjectItems = {
+			E70E1D1F12623589001B24F9 /* PBXTextBookmark */ = E70E1D1F12623589001B24F9 /* PBXTextBookmark */;
+			E70E21B81269F522001B24F9 /* PBXTextBookmark */ = E70E21B81269F522001B24F9 /* PBXTextBookmark */;
+			E70E21B91269F522001B24F9 /* PBXTextBookmark */ = E70E21B91269F522001B24F9 /* PBXTextBookmark */;
+			E70E2263126B68A0001B24F9 /* PBXTextBookmark */ = E70E2263126B68A0001B24F9 /* PBXTextBookmark */;
+			E70E2264126B68A0001B24F9 /* PBXTextBookmark */ = E70E2264126B68A0001B24F9 /* PBXTextBookmark */;
+			E70E2265126B68A0001B24F9 /* PBXTextBookmark */ = E70E2265126B68A0001B24F9 /* PBXTextBookmark */;
+			E70E2266126B68A0001B24F9 /* PBXTextBookmark */ = E70E2266126B68A0001B24F9 /* PBXTextBookmark */;
+			E72CA879123004E60016E37D /* PBXTextBookmark */ = E72CA879123004E60016E37D /* PBXTextBookmark */;
+			E73E6E60128057DE00177338 /* PBXTextBookmark */ = E73E6E60128057DE00177338 /* PBXTextBookmark */;
+			E73E6E61128057DE00177338 /* PBXTextBookmark */ = E73E6E61128057DE00177338 /* PBXTextBookmark */;
+			E73E6E63128057DE00177338 /* PBXTextBookmark */ = E73E6E63128057DE00177338 /* PBXTextBookmark */;
+			E73E71021283220F00177338 /* PBXTextBookmark */ = E73E71021283220F00177338 /* PBXTextBookmark */;
+			E75C4D68127DBBEA009CD156 /* PBXTextBookmark */ = E75C4D68127DBBEA009CD156 /* PBXTextBookmark */;
+			E75C4D69127DBBEA009CD156 /* PBXTextBookmark */ = E75C4D69127DBBEA009CD156 /* PBXTextBookmark */;
+			E75C4D6A127DBBEA009CD156 /* PBXTextBookmark */ = E75C4D6A127DBBEA009CD156 /* PBXTextBookmark */;
+			E75C4D6B127DBBEA009CD156 /* PBXTextBookmark */ = E75C4D6B127DBBEA009CD156 /* PBXTextBookmark */;
+			E771FB91123AACD70097E13F /* PBXTextBookmark */ = E771FB91123AACD70097E13F /* PBXTextBookmark */;
+			E7A2DEAE123D129A00ED2D84 /* PBXBookmark */ = E7A2DEAE123D129A00ED2D84 /* PBXBookmark */;
+			E7AF833B122D81590060AED3 /* PBXTextBookmark */ = E7AF833B122D81590060AED3 /* PBXTextBookmark */;
+			E7B9956C1242696E00A21794 /* PBXTextBookmark */ = E7B9956C1242696E00A21794 /* PBXTextBookmark */;
+			E7B9956D1242696E00A21794 /* PBXTextBookmark */ = E7B9956D1242696E00A21794 /* PBXTextBookmark */;
+			E7B9956E1242696E00A21794 /* PBXTextBookmark */ = E7B9956E1242696E00A21794 /* PBXTextBookmark */;
+			E7B995701242696E00A21794 /* PBXTextBookmark */ = E7B995701242696E00A21794 /* PBXTextBookmark */;
+			E7B995711242696E00A21794 /* PBXTextBookmark */ = E7B995711242696E00A21794 /* PBXTextBookmark */;
+			E7B995721242696E00A21794 /* PBXTextBookmark */ = E7B995721242696E00A21794 /* PBXTextBookmark */;
+			E7B995731242696E00A21794 /* PBXTextBookmark */ = E7B995731242696E00A21794 /* PBXTextBookmark */;
+			E7B995741242696E00A21794 /* PBXTextBookmark */ = E7B995741242696E00A21794 /* PBXTextBookmark */;
+			E7B995751242696E00A21794 /* PBXTextBookmark */ = E7B995751242696E00A21794 /* PBXTextBookmark */;
+			E7B995761242696E00A21794 /* PBXTextBookmark */ = E7B995761242696E00A21794 /* PBXTextBookmark */;
+			E7B996FE124417D100A21794 /* PBXTextBookmark */ = E7B996FE124417D100A21794 /* PBXTextBookmark */;
+			E7B996FF124417D100A21794 /* PBXTextBookmark */ = E7B996FF124417D100A21794 /* PBXTextBookmark */;
+			E7CD45F4125B75070027375A /* PBXTextBookmark */ = E7CD45F4125B75070027375A /* PBXTextBookmark */;
+			E7CD45F8125B75070027375A /* PBXTextBookmark */ = E7CD45F8125B75070027375A /* PBXTextBookmark */;
+			E7E20E0612352CCA0074F222 /* PlistBookmark */ = E7E20E0612352CCA0074F222 /* PlistBookmark */;
+			E7EF72D712490346003B902C /* XDModelBookmark */ = E7EF72D712490346003B902C /* XDModelBookmark */;
+		};
+		sourceControlManager = E7455DD0122D65D500B19CB2 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	4214D8C611C7DB2D00F75443 /* DiaryListViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1018, 889}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1056}";
+		};
+	};
+	4214D8C711C7DB2D00F75443 /* DiaryListViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1218, 3681}}";
+			sepNavSelRange = "{9562, 204}";
+			sepNavVisRange = "{8780, 1385}";
+		};
+	};
+	4214D8CD11C7DB9200F75443 /* DiaryListTableViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {886, 806}}";
+			sepNavSelRange = "{781, 0}";
+			sepNavVisRange = "{0, 1519}";
+		};
+	};
+	4214D8CE11C7DB9200F75443 /* DiaryListTableViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {2371, 5773}}";
+			sepNavSelRange = "{14435, 20}";
+			sepNavVisRange = "{13890, 1125}";
+		};
+	};
+	4214D8E711C7E20400F75443 /* EventListTableViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {837, 858}}";
+			sepNavSelRange = "{777, 159}";
+			sepNavVisRange = "{0, 1275}";
+		};
+	};
+	4214D8E811C7E20400F75443 /* EventListTableViewController.m */ = {
+		uiCtxt = {
+			sepNavFolds = "{\n    c =     (\n                {\n            l = DetailViewController;\n            r = \"{12917, 24}\";\n            s = 1;\n        },\n                {\n            l = DetailViewController;\n            r = \"{12968, 24}\";\n            s = 1;\n        },\n                {\n            l = \"Nib name\";\n            r = \"{13018, 12}\";\n            s = 1;\n        }\n    );\n    r = \"{0, 14355}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {2343, 5513}}";
+			sepNavSelRange = "{3776, 102}";
+			sepNavVisRange = "{3160, 2718}";
+		};
+	};
+	4214DC1D11CB669700F75443 /* NewIPhotoDiary.xcdatamodel */ = {
+		uiCtxt = {
+			"Xdesign Model Editor Bookmark Key" = {
+				UIContextForDetailArea = {
+					_indexOfSelectedPane = 0;
+					_indexOfSelectedView = 0;
+				};
+				UIContextForEntityArea = {
+					_indexOfSelectedView = 0;
+					chosenTableColumnns = (
+						"ET Entity",
+						"ET Abstract",
+						"ET Class",
+					);
+					chosenTableColumnns_sortDirections = (
+						YES,
+					);
+					chosenTableColumnns_sortKeys = (
+						name,
+					);
+					chosenTableColumnns_sortSelectors = (
+						"_xdcaseInsensitiveNumericCompare:",
+					);
+					chosenTableWidths = (
+						103.000000,
+						22.000000,
+						116.080078,
+					);
+				};
+				UIContextForLayoutManager = {
+					detailSplitGeometry = {
+						_collapsingFrameDimension = 0;
+						_indexOfCollapsedView = 0;
+						_percentageOfCollapsedView = 0;
+						isCollapsed = yes;
+						sizes = (
+							"{{0, 0}, {616, 220}}",
+							"{{621, 0}, {324, 220}}",
+						);
+					};
+					diagramSplitGeometry = {
+						_collapsingFrameDimension = 0;
+						_indexOfCollapsedView = 0;
+						_percentageOfCollapsedView = 0;
+						isCollapsed = yes;
+						sizes = (
+							"{{0, 0}, {945, 220}}",
+							"{{0, 225}, {945, 616}}",
+						);
+					};
+					tableSplitGeometry = {
+						_collapsingFrameDimension = 0;
+						_indexOfCollapsedView = 0;
+						_percentageOfCollapsedView = 0;
+						isCollapsed = yes;
+						sizes = (
+							"{{0, 0}, {266, 218}}",
+							"{{271, 0}, {343, 218}}",
+						);
+					};
+				};
+				UIContextForPropertyArea = {
+					_indexOfSelectedView = 0;
+					chosenTableColumnnFRTs = (
+						"FT Fetch Request",
+						"FT Predicate",
+					);
+					chosenTableColumnnFRTs_sortDirections = (
+						YES,
+					);
+					chosenTableColumnnFRTs_sortKeys = (
+						name,
+					);
+					chosenTableColumnnFRTs_sortSelectors = (
+						"_xdcaseInsensitiveNumericCompare:",
+					);
+					chosenTableColumnnsAT = (
+						"AT Attribute",
+						"AT Type",
+					);
+					chosenTableColumnnsAT_sortDirections = (
+						YES,
+					);
+					chosenTableColumnnsAT_sortKeys = (
+						name,
+					);
+					chosenTableColumnnsAT_sortSelectors = (
+						"_xdcaseInsensitiveNumericCompare:",
+					);
+					chosenTableColumnnsFPT = (
+						"FP FetchedProperty",
+						"FP Destination",
+						"FP Predicate",
+					);
+					chosenTableColumnnsFPT_sortDirections = (
+						YES,
+					);
+					chosenTableColumnnsFPT_sortKeys = (
+						name,
+					);
+					chosenTableColumnnsFPT_sortSelectors = (
+						"_xdcaseInsensitiveNumericCompare:",
+					);
+					chosenTableColumnnsPT = (
+						"PT Property",
+						"PT Kind",
+						"PT SharedKeyOne",
+					);
+					chosenTableColumnnsPT_sortDirections = (
+						YES,
+					);
+					chosenTableColumnnsPT_sortKeys = (
+						name,
+					);
+					chosenTableColumnnsPT_sortSelectors = (
+						"_xdcaseInsensitiveNumericCompare:",
+					);
+					chosenTableColumnnsRT = (
+						"RT Relationship",
+						"RT Destination",
+					);
+					chosenTableColumnnsRT_sortDirections = (
+						YES,
+					);
+					chosenTableColumnnsRT_sortKeys = (
+						name,
+					);
+					chosenTableColumnnsRT_sortSelectors = (
+						"_xdcaseInsensitiveNumericCompare:",
+					);
+					chosenTableWidthsAT = (
+						128.000000,
+						64.000000,
+					);
+					chosenTableWidthsFPT = (
+						128.000000,
+						64.000000,
+						144.764160,
+					);
+					chosenTableWidthsFRT = (
+						128.000000,
+						249.764160,
+					);
+					chosenTableWidthsPT = (
+						128.000000,
+						108.110840,
+						96.570801,
+					);
+					chosenTableWidthsRT = (
+						128.000000,
+						64.000000,
+					);
+				};
+				"xdesign model browser state key - shown/hidden" = 1;
+				"xdesign model diagram view visible rect key" = "{{0, 0}, {930, 601}}";
+			};
+		};
+	};
+	4214DEB411CD47D700F75443 /* DataPickerViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1146, 1600}}";
+			sepNavSelRange = "{2411, 48}";
+			sepNavVisRange = "{1450, 1397}";
+		};
+	};
+	422A9A9A11B35BE500DB8951 /* AddChildViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {971, 1014}}";
+			sepNavSelRange = "{587, 26}";
+			sepNavVisRange = "{0, 1077}";
+		};
+	};
+	422A9A9B11B35BE500DB8951 /* AddChildViewController.m */ = {
+		uiCtxt = {
+			sepNavFolds = "{\n    c =     (\n                {\n            l = DetailViewController;\n            r = \"{12505, 24}\";\n            s = 1;\n        },\n                {\n            l = DetailViewController;\n            r = \"{12556, 24}\";\n            s = 1;\n        },\n                {\n            l = \"Nib name\";\n            r = \"{12606, 12}\";\n            s = 1;\n        }\n    );\n    r = \"{0, 32314}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {1132, 12091}}";
+			sepNavSelRange = "{13232, 87}";
+			sepNavVisRange = "{12421, 1178}";
+		};
+	};
+	422A9AD911B3A3A200DB8951 /* ChildBasicInfoCell.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {901, 598}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{92, 1198}";
+		};
+	};
+	422AFB6F11D6EA5A00D1AE99 /* AddAnniversaryViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1146, 1679}}";
+			sepNavSelRange = "{2019, 616}";
+			sepNavVisRange = "{876, 2056}";
+		};
+	};
+	422AFBA711D7B72E00D1AE99 /* AnniversaryDetailTableViewController.m */ = {
+		uiCtxt = {
+			sepNavFolds = "{\n    c =     (\n                {\n            l = DetailViewController;\n            r = \"{5634, 24}\";\n            s = 1;\n        },\n                {\n            l = DetailViewController;\n            r = \"{5685, 24}\";\n            s = 1;\n        },\n                {\n            l = \"Nib name\";\n            r = \"{5735, 12}\";\n            s = 1;\n        }\n    );\n    r = \"{0, 6556}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {1048, 3024}}";
+			sepNavSelRange = "{3578, 446}";
+			sepNavVisRange = "{2964, 1123}";
+		};
+	};
+	4233346811E60EB400B75307 /* GoogleSyncViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {896, 884}}";
+			sepNavSelRange = "{177, 0}";
+			sepNavVisRange = "{0, 411}";
+		};
+	};
+	4233476A11E747FA00B75307 /* GData.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {886, 559}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1244}";
+		};
+	};
+	4233477211E747FA00B75307 /* GDataObject.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {886, 8385}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{3062, 1621}";
+		};
+	};
+	423348C111E747FC00B75307 /* GDataDocs.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {886, 559}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1110}";
+		};
+	};
+	4268C63C11A7B24B002E1B48 /* AppMainViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {886, 1261}}";
+			sepNavSelRange = "{1046, 7}";
+			sepNavVisRange = "{137, 1805}";
+		};
+	};
+	4268C63D11A7B24B002E1B48 /* AppMainViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1391, 9045}}";
+			sepNavSelRange = "{14161, 8414}";
+			sepNavVisRange = "{21632, 1367}";
+		};
+	};
+	42772D3411C401B700A64627 /* AddNewChildViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {886, 533}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1134}";
+		};
+	};
+	42772D3511C401B700A64627 /* AddNewChildViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1370, 2724}}";
+			sepNavSelRange = "{4489, 97}";
+			sepNavVisRange = "{4438, 1202}";
+		};
+	};
+	427B077511EF78DF00D11D5E /* ChildData.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {886, 910}}";
+			sepNavSelRange = "{253, 63}";
+			sepNavVisRange = "{38, 2023}";
+		};
+	};
+	427B077611EF78DF00D11D5E /* ChildData.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {886, 832}}";
+			sepNavSelRange = "{654, 397}";
+			sepNavVisRange = "{0, 1051}";
+		};
+	};
+	4297498E1191E8C200C602A5 /* CalendarGridViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {837, 835}}";
+			sepNavSelRange = "{1299, 0}";
+			sepNavVisRange = "{0, 1306}";
+		};
+	};
+	4297498F1191E8C200C602A5 /* CalendarGridViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1265, 2939}}";
+			sepNavSelRange = "{2159, 69}";
+			sepNavVisRange = "{885, 2270}";
+		};
+	};
+	42B0673611D48D400084820F /* AddEventBackgroundViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1510, 6145}}";
+			sepNavSelRange = "{2088, 1}";
+			sepNavVisRange = "{9640, 2764}";
+		};
+	};
+	42B7611A118C780F00B48FBD /* EditDiaryViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {886, 1898}}";
+			sepNavSelRange = "{754, 21}";
+			sepNavVisRange = "{0, 1251}";
+		};
+	};
+	42B7611B118C780F00B48FBD /* EditDiaryViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1510, 14468}}";
+			sepNavSelRange = "{11319, 0}";
+			sepNavVisRange = "{10866, 1219}";
+		};
+	};
+	42F213C311D1AEF200713E5D /* DiaryListCell.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1018, 889}}";
+			sepNavSelRange = "{646, 22}";
+			sepNavVisRange = "{0, 674}";
+		};
+	};
+	42F213C411D1AEF200713E5D /* DiaryListCell.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1018, 889}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 812}";
+		};
+	};
+	42F2148C11D2577900713E5D /* DiaryPhotoSlideViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1209, 4000}}";
+			sepNavSelRange = "{8490, 37}";
+			sepNavVisRange = "{7377, 1543}";
+		};
+	};
+	42F2166F11D3E15800713E5D /* AddEventViewController.m */ = {
+		uiCtxt = {
+			sepNavFolds = "{\n    c =     (\n                {\n            l = DetailViewController;\n            r = \"{6668, 24}\";\n            s = 1;\n        },\n                {\n            l = DetailViewController;\n            r = \"{6719, 24}\";\n            s = 1;\n        },\n                {\n            l = \"Nib name\";\n            r = \"{6769, 12}\";\n            s = 1;\n        }\n    );\n    r = \"{0, 7860}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {1146, 3754}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{4416, 1845}";
+		};
+	};
+	42F2167711D3E31400713E5D /* EventSettingCell.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1018, 889}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 777}";
+		};
+	};
+	E70E1D1F12623589001B24F9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 42772D3411C401B700A64627 /* AddNewChildViewController.h */;
+		name = "AddNewChildViewController.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1134;
+		vrLoc = 0;
+	};
+	E70E21B81269F522001B24F9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 42B7611A118C780F00B48FBD /* EditDiaryViewController.h */;
+		name = "EditDiaryViewController.h: 30";
+		rLen = 21;
+		rLoc = 754;
+		rType = 0;
+		vrLen = 1251;
+		vrLoc = 0;
+	};
+	E70E21B91269F522001B24F9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* iPhotoDiaryAppDelegate.m */;
+		name = "iPhotoDiaryAppDelegate.m: 134";
+		rLen = 506;
+		rLoc = 4265;
+		rType = 0;
+		vrLen = 1594;
+		vrLoc = 878;
+	};
+	E70E2263126B68A0001B24F9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 422A9A9A11B35BE500DB8951 /* AddChildViewController.h */;
+		name = "AddChildViewController.h: 25";
+		rLen = 26;
+		rLoc = 587;
+		rType = 0;
+		vrLen = 1077;
+		vrLoc = 0;
+	};
+	E70E2264126B68A0001B24F9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 422A9AD911B3A3A200DB8951 /* ChildBasicInfoCell.h */;
+		name = "ChildBasicInfoCell.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1198;
+		vrLoc = 92;
+	};
+	E70E2265126B68A0001B24F9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 422A9A9B11B35BE500DB8951 /* AddChildViewController.m */;
+		name = "AddChildViewController.m: 417";
+		rLen = 87;
+		rLoc = 13289;
+		rType = 0;
+		vrLen = 1235;
+		vrLoc = 12421;
+	};
+	E70E2266126B68A0001B24F9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 422AFBA711D7B72E00D1AE99 /* AnniversaryDetailTableViewController.m */;
+		name = "AnniversaryDetailTableViewController.m: 130";
+		rLen = 446;
+		rLoc = 3578;
+		rType = 0;
+		vrLen = 1123;
+		vrLoc = 2964;
+	};
+	E72CA879123004E60016E37D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* iPhotoDiaryAppDelegate.h */;
+		name = "iPhotoDiaryAppDelegate.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1813;
+		vrLoc = 0;
+	};
+	E73E6E60128057DE00177338 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4268C63D11A7B24B002E1B48 /* AppMainViewController.m */;
+		name = "AppMainViewController.m: 413";
+		rLen = 8414;
+		rLoc = 14161;
+		rType = 0;
+		vrLen = 1367;
+		vrLoc = 21632;
+	};
+	E73E6E61128057DE00177338 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 42B7611B118C780F00B48FBD /* EditDiaryViewController.m */;
+		name = "EditDiaryViewController.m: 332";
+		rLen = 0;
+		rLoc = 11319;
+		rType = 0;
+		vrLen = 1219;
+		vrLoc = 10866;
+	};
+	E73E6E63128057DE00177338 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 42772D3511C401B700A64627 /* AddNewChildViewController.m */;
+		name = "AddNewChildViewController.m: 127";
+		rLen = 97;
+		rLoc = 4489;
+		rType = 0;
+		vrLen = 1204;
+		vrLoc = 4438;
+	};
+	E73E71021283220F00177338 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 42772D3511C401B700A64627 /* AddNewChildViewController.m */;
+		name = "AddNewChildViewController.m: 127";
+		rLen = 97;
+		rLoc = 4489;
+		rType = 0;
+		vrLen = 1202;
+		vrLoc = 4438;
+	};
+	E7455DB8122D65B500B19CB2 /* iPhotoDiary */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = iPhotoDiary;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	E7455DD0122D65D500B19CB2 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	E7455DD1122D65D500B19CB2 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	E75C4D68127DBBEA009CD156 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 422AFB6F11D6EA5A00D1AE99 /* AddAnniversaryViewController.m */;
+		name = "AddAnniversaryViewController.m: 56";
+		rLen = 616;
+		rLoc = 2019;
+		rType = 0;
+		vrLen = 2056;
+		vrLoc = 876;
+	};
+	E75C4D69127DBBEA009CD156 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4214DEB411CD47D700F75443 /* DataPickerViewController.m */;
+		name = "DataPickerViewController.m: 72";
+		rLen = 48;
+		rLoc = 2411;
+		rType = 0;
+		vrLen = 1397;
+		vrLoc = 1450;
+	};
+	E75C4D6A127DBBEA009CD156 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4214D8CE11C7DB9200F75443 /* DiaryListTableViewController.m */;
+		name = "DiaryListTableViewController.m: 393";
+		rLen = 20;
+		rLoc = 14435;
+		rType = 0;
+		vrLen = 1125;
+		vrLoc = 13890;
+	};
+	E75C4D6B127DBBEA009CD156 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4214D8C711C7DB2D00F75443 /* DiaryListViewController.m */;
+		name = "DiaryListViewController.m: 243";
+		rLen = 204;
+		rLoc = 9562;
+		rType = 0;
+		vrLen = 1385;
+		vrLoc = 8780;
+	};
+	E771FB91123AACD70097E13F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4297498E1191E8C200C602A5 /* CalendarGridViewController.h */;
+		name = "CalendarGridViewController.h: 41";
+		rLen = 0;
+		rLoc = 1299;
+		rType = 0;
+		vrLen = 1306;
+		vrLoc = 0;
+	};
+	E7A2DEAE123D129A00ED2D84 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 421D82B21189608400640B1F /* left-duparrow.png */;
+	};
+	E7AF833B122D81590060AED3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4233346811E60EB400B75307 /* GoogleSyncViewController.h */;
+		name = "GoogleSyncViewController.h: 10";
+		rLen = 0;
+		rLoc = 186;
+		rType = 0;
+		vrLen = 1363;
+		vrLoc = 0;
+	};
+	E7B9956C1242696E00A21794 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4297498F1191E8C200C602A5 /* CalendarGridViewController.m */;
+		name = "CalendarGridViewController.m: 74";
+		rLen = 69;
+		rLoc = 2159;
+		rType = 0;
+		vrLen = 2270;
+		vrLoc = 885;
+	};
+	E7B9956D1242696E00A21794 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4214D8E711C7E20400F75443 /* EventListTableViewController.h */;
+		name = "EventListTableViewController.h: 32";
+		rLen = 159;
+		rLoc = 777;
+		rType = 0;
+		vrLen = 1275;
+		vrLoc = 0;
+	};
+	E7B9956E1242696E00A21794 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4214D8C611C7DB2D00F75443 /* DiaryListViewController.h */;
+		name = "DiaryListViewController.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1056;
+		vrLoc = 0;
+	};
+	E7B995701242696E00A21794 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 42F213C311D1AEF200713E5D /* DiaryListCell.h */;
+		name = "DiaryListCell.h: 31";
+		rLen = 22;
+		rLoc = 646;
+		rType = 0;
+		vrLen = 674;
+		vrLoc = 0;
+	};
+	E7B995711242696E00A21794 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 42F213C411D1AEF200713E5D /* DiaryListCell.m */;
+		name = "DiaryListCell.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 812;
+		vrLoc = 0;
+	};
+	E7B995721242696E00A21794 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 42F2167711D3E31400713E5D /* EventSettingCell.m */;
+		name = "EventSettingCell.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 777;
+		vrLoc = 0;
+	};
+	E7B995731242696E00A21794 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4214D8E811C7E20400F75443 /* EventListTableViewController.m */;
+		name = "EventListTableViewController.m: 133";
+		rLen = 102;
+		rLoc = 3776;
+		rType = 0;
+		vrLen = 2718;
+		vrLoc = 3160;
+	};
+	E7B995741242696E00A21794 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 42B0673611D48D400084820F /* AddEventBackgroundViewController.m */;
+		name = "AddEventBackgroundViewController.m: 71";
+		rLen = 1;
+		rLoc = 2088;
+		rType = 0;
+		vrLen = 2764;
+		vrLoc = 9640;
+	};
+	E7B995751242696E00A21794 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 42F2166F11D3E15800713E5D /* AddEventViewController.m */;
+		name = "AddEventViewController.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1845;
+		vrLoc = 4416;
+	};
+	E7B995761242696E00A21794 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4214D8CD11C7DB9200F75443 /* DiaryListTableViewController.h */;
+		name = "DiaryListTableViewController.h: 30";
+		rLen = 0;
+		rLoc = 781;
+		rType = 0;
+		vrLen = 1519;
+		vrLoc = 0;
+	};
+	E7B996FE124417D100A21794 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 427B077511EF78DF00D11D5E /* ChildData.h */;
+		name = "ChildData.h: 16";
+		rLen = 63;
+		rLoc = 253;
+		rType = 0;
+		vrLen = 2023;
+		vrLoc = 38;
+	};
+	E7B996FF124417D100A21794 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 427B077611EF78DF00D11D5E /* ChildData.m */;
+		name = "ChildData.m: 40";
+		rLen = 397;
+		rLoc = 654;
+		rType = 0;
+		vrLen = 1051;
+		vrLoc = 0;
+	};
+	E7CD45F4125B75070027375A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 42F2148C11D2577900713E5D /* DiaryPhotoSlideViewController.m */;
+		name = "DiaryPhotoSlideViewController.m: 267";
+		rLen = 37;
+		rLoc = 8490;
+		rType = 0;
+		vrLen = 1543;
+		vrLoc = 7377;
+	};
+	E7CD45F8125B75070027375A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4268C63C11A7B24B002E1B48 /* AppMainViewController.h */;
+		name = "AppMainViewController.h: 46";
+		rLen = 7;
+		rLoc = 1046;
+		rType = 0;
+		vrLen = 1805;
+		vrLoc = 137;
+	};
+	E7E20E0612352CCA0074F222 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* iPhotoDiary-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Developer/Project Backup/iPhotoDiary_current/iPhotoDiary-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775808;
+	};
+	E7EF72D712490346003B902C /* XDModelBookmark */ = {
+		isa = XDModelBookmark;
+		fRef = 4214DC1D11CB669700F75443 /* NewIPhotoDiary.xcdatamodel */;
+		fallbackIsa = PBXBookmark;
+	};
+}

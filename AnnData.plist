@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>1. 1.</key>
+	<dict>
+		<key>설날</key>
+		<dict>
+			<key>date</key>
+			<string>1. 1.</string>
+			<key>holy</key>
+			<string>ON</string>
+			<key>lunar</key>
+			<string>ON</string>
+			<key>name</key>
+			<string>설날</string>
+		</dict>
+		<key>신정</key>
+		<dict>
+			<key>date</key>
+			<string>1. 1.</string>
+			<key>holy</key>
+			<string>ON</string>
+			<key>lunar</key>
+			<string>OFF</string>
+			<key>name</key>
+			<string>신정</string>
+		</dict>
+	</dict>
+	<key>1. 15.</key>
+	<dict>
+		<key>정월대보름</key>
+		<dict>
+			<key>date</key>
+			<string>1. 15.</string>
+			<key>holy</key>
+			<string>OFF</string>
+			<key>lunar</key>
+			<string>ON</string>
+			<key>name</key>
+			<string>정월대보름</string>
+		</dict>
+	</dict>
+	<key>10. 1.</key>
+	<dict>
+		<key>국군의날</key>
+		<dict>
+			<key>date</key>
+			<string>10. 1.</string>
+			<key>holy</key>
+			<string>OFF</string>
+			<key>lunar</key>
+			<string>OFF</string>
+			<key>name</key>
+			<string>국군의날</string>
+		</dict>
+	</dict>
+	<key>10. 3.</key>
+	<dict>
+		<key>개천절</key>
+		<dict>
+			<key>date</key>
+			<string>10. 3.</string>
+			<key>holy</key>
+			<string>ON</string>
+			<key>lunar</key>
+			<string>OFF</string>
+			<key>name</key>
+			<string>개천절</string>
+		</dict>
+	</dict>
+	<key>10. 9.</key>
+	<dict>
+		<key>한글날</key>
+		<dict>
+			<key>date</key>
+			<string>10. 9.</string>
+			<key>holy</key>
+			<string>OFF</string>
+			<key>lunar</key>
+			<string>OFF</string>
+			<key>name</key>
+			<string>한글날</string>
+		</dict>
+	</dict>
+	<key>12. 25.</key>
+	<dict>
+		<key>크리스마스</key>
+		<dict>
+			<key>date</key>
+			<string>12. 25.</string>
+			<key>holy</key>
+			<string>ON</string>
+			<key>lunar</key>
+			<string>OFF</string>
+			<key>name</key>
+			<string>크리스마스</string>
+		</dict>
+	</dict>
+	<key>3. 1.</key>
+	<dict>
+		<key>삼일절</key>
+		<dict>
+			<key>date</key>
+			<string>3. 1.</string>
+			<key>holy</key>
+			<string>ON</string>
+			<key>lunar</key>
+			<string>OFF</string>
+			<key>name</key>
+			<string>삼일절</string>
+		</dict>
+	</dict>
+	<key>3. 3.</key>
+	<dict>
+		<key>삼월삼짇날</key>
+		<dict>
+			<key>date</key>
+			<string>3. 3.</string>
+			<key>holy</key>
+			<string>OFF</string>
+			<key>lunar</key>
+			<string>ON</string>
+			<key>name</key>
+			<string>삼월삼짇날</string>
+		</dict>
+	</dict>
+	<key>4. 5.</key>
+	<dict>
+		<key>식목일</key>
+		<dict>
+			<key>date</key>
+			<string>4. 5.</string>
+			<key>holy</key>
+			<string>OFF</string>
+			<key>lunar</key>
+			<string>OFF</string>
+			<key>name</key>
+			<string>식목일</string>
+		</dict>
+	</dict>
+	<key>4. 8.</key>
+	<dict>
+		<key>석가탄신일</key>
+		<dict>
+			<key>date</key>
+			<string>4. 8.</string>
+			<key>holy</key>
+			<string>ON</string>
+			<key>lunar</key>
+			<string>ON</string>
+			<key>name</key>
+			<string>석가탄신일</string>
+		</dict>
+	</dict>
+	<key>5. 1.</key>
+	<dict>
+		<key>노동절</key>
+		<dict>
+			<key>date</key>
+			<string>5. 1.</string>
+			<key>holy</key>
+			<string>ON</string>
+			<key>lunar</key>
+			<string>OFF</string>
+			<key>name</key>
+			<string>노동절</string>
+		</dict>
+	</dict>
+	<key>5. 15.</key>
+	<dict>
+		<key>스승의날</key>
+		<dict>
+			<key>date</key>
+			<string>5. 15.</string>
+			<key>holy</key>
+			<string>OFF</string>
+			<key>lunar</key>
+			<string>OFF</string>
+			<key>name</key>
+			<string>스승의날</string>
+		</dict>
+	</dict>
+	<key>5. 5.</key>
+	<dict>
+		<key> 어린이날</key>
+		<dict>
+			<key>date</key>
+			<string>5. 5.</string>
+			<key>holy</key>
+			<string>ON</string>
+			<key>lunar</key>
+			<string>OFF</string>
+			<key>name</key>
+			<string> 어린이날</string>
+		</dict>
+		<key>단오</key>
+		<dict>
+			<key>date</key>
+			<string>5. 5.</string>
+			<key>holy</key>
+			<string>OFF</string>
+			<key>lunar</key>
+			<string>ON</string>
+			<key>name</key>
+			<string>단오</string>
+		</dict>
+	</dict>
+	<key>5. 8.</key>
+	<dict>
+		<key>어버이날</key>
+		<dict>
+			<key>date</key>
+			<string>5. 8.</string>
+			<key>holy</key>
+			<string>OFF</string>
+			<key>lunar</key>
+			<string>OFF</string>
+			<key>name</key>
+			<string>어버이날</string>
+		</dict>
+	</dict>
+	<key>6. 6.</key>
+	<dict>
+		<key>현충일</key>
+		<dict>
+			<key>date</key>
+			<string>6. 6.</string>
+			<key>holy</key>
+			<string>ON</string>
+			<key>lunar</key>
+			<string>OFF</string>
+			<key>name</key>
+			<string>현충일</string>
+		</dict>
+	</dict>
+	<key>7. 17.</key>
+	<dict>
+		<key>제헌절</key>
+		<dict>
+			<key>date</key>
+			<string>7. 17.</string>
+			<key>holy</key>
+			<string>OFF</string>
+			<key>lunar</key>
+			<string>OFF</string>
+			<key>name</key>
+			<string>제헌절</string>
+		</dict>
+	</dict>
+	<key>7. 7.</key>
+	<dict>
+		<key>칠월칠석</key>
+		<dict>
+			<key>date</key>
+			<string>7. 7.</string>
+			<key>holy</key>
+			<string>OFF</string>
+			<key>lunar</key>
+			<string>ON</string>
+			<key>name</key>
+			<string>칠월칠석</string>
+		</dict>
+	</dict>
+	<key>8. 15.</key>
+	<dict>
+		<key>광복절</key>
+		<dict>
+			<key>date</key>
+			<string>8. 15.</string>
+			<key>holy</key>
+			<string>ON</string>
+			<key>lunar</key>
+			<string>OFF</string>
+			<key>name</key>
+			<string>광복절</string>
+		</dict>
+		<key>추석</key>
+		<dict>
+			<key>date</key>
+			<string>8. 15.</string>
+			<key>holy</key>
+			<string>ON</string>
+			<key>lunar</key>
+			<string>ON</string>
+			<key>name</key>
+			<string>추석</string>
+		</dict>
+	</dict>
+	<key>9. 9.</key>
+	<dict>
+		<key>중양절</key>
+		<dict>
+			<key>date</key>
+			<string>9. 9.</string>
+			<key>holy</key>
+			<string>OFF</string>
+			<key>lunar</key>
+			<string>ON</string>
+			<key>name</key>
+			<string>중양절</string>
+		</dict>
+	</dict>
+	<key>AnnData</key>
+	<dict/>
+</dict>
+</plist>

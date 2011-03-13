@@ -24,7 +24,7 @@
 @synthesize diaryListController;
 @synthesize eventListController;
 
-BOOL gLogging = YES;
+BOOL gLogging = NO;
 
 #pragma mark -
 #pragma mark Application lifecycle

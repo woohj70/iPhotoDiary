@@ -26,6 +26,15 @@
 #define KL_HEADER_HEIGHT                27.0f
 #define KL_HEADER_FONT_SIZE             (KL_HEADER_HEIGHT-6.0f)
 
+#ifndef __SOLAR_START__
+#define __SOLAR_START__ 953537715 // start base unix timestamp
+#define __SOLAR_TYEAR__ 31556940 // tropicalyear to seconds
+#define __SOLAR_BYEAR__ 2000 // start base year
+#endif
+
+#define min(X, Y)  ((X) < (Y) ? (X) : (Y))
+#define max(X, Y)  ((X) > (Y) ? (X) : (Y))
+
 @class KLCalendarModel;
 
 @protocol MyCalendarViewDelegate;
@@ -50,6 +59,11 @@
 	
 	NSMutableDictionary *annData;
 	NSMutableDictionary *tempData;
+    
+    NSArray *hterms;
+    NSMutableDictionary *julgi;
+    
+    int prevYear;
 }
 
 @property(nonatomic, assign) id <MyCalendarViewDelegate> delegate;
@@ -65,8 +79,12 @@
 @property (nonatomic, retain) NSArray *eventDatas;
 @property (nonatomic, retain) NSArray *anniversaryDatas;
 @property (nonatomic, retain) NSDateFormatter *dateFormatter;
+
+@property (nonatomic, retain) NSArray *hterms;
+@property (nonatomic, retain) NSMutableDictionary *julgi;
 //@property (nonatomic, retain) UIView *container;
 
+- (id)initWithFrame:(CGRect)frame  delegate:(id <MyCalendarViewDelegate>)aDelegate withManagedObjectContext:managedObjectContext andJulgi:(NSDictionary *)julki;
 //- (id)initWithImage:(UIImage *)image delegate:(id <MyCalendarViewDelegate>)delegate;
 - (id)initWithFrame:(CGRect)frame  delegate:(id <MyCalendarViewDelegate>)aDelegate;
 - (void)drawCalendarHead;
@@ -74,6 +92,7 @@
 - (void)removeAllButtons;
 - (void)addButtonArray;
 - (void)selectedDateButton:(UIButton *)dateButton;
+
 
 @end
 

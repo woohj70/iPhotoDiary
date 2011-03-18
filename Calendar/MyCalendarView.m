@@ -21,6 +21,12 @@
 - (void)showFollowingMonth;
 @end
 
+static int tterms[24] =
+{
+    -6418939, -5146737, -3871136, -2589569, -1299777, 0, 1310827, 2633103, 3966413, 5309605, 6660762, 8017383,
+    9376511, 10735018, 12089855, 13438199, 14777792, 16107008, 17424841, 18731368, 20027093, 21313452, 22592403, 23866369
+};
+
 @implementation MyCalendarView
 
 @synthesize delegate;
@@ -34,6 +40,7 @@
 @synthesize diaryDatas;
 @synthesize anniversaryDatas;
 @synthesize dateFormatter;
+@synthesize hterms, julgi;
 //@synthesize container;
 
 /*
@@ -59,9 +66,14 @@
  */
 
 
-- (id)initWithFrame:(CGRect)frame  delegate:(id <MyCalendarViewDelegate>)aDelegate withManagedObjectContext:managedObjectContext{
+- (id)initWithFrame:(CGRect)frame  delegate:(id <MyCalendarViewDelegate>)aDelegate withManagedObjectContext:managedObjectContext {
     if (self = [super initWithFrame:frame]) {
         // Initialization code
+        prevYear = 0;
+        //        self.julgi = [[NSMutableDictionary alloc] init];
+        self.hterms = [[NSArray alloc] initWithObjects:@"소한",@"대한",@"입춘",@"우수",@"경칩",@"춘분",@"청명",@"곡우",@"입하",@"소만",@"망종",@"하지",
+                       @"소서",@"대서",@"입추",@"처서",@"백로",@"추분",@"한로",@"상강",@"입동",@"소설",@"대설",@"동지",nil];
+        
 		self.delegate = aDelegate;
 		//		self.backgroundColor = [UIColor blackColor];
 		//		self.image = [UIImage imageNamed:@"background.png"];
@@ -87,7 +99,7 @@
 			NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 			abort();
 		}
-		
+        
 		[self loadData];
 		[self addUI];
 		[self refreshViewWithPushDirection:nil];
@@ -327,6 +339,9 @@
 - (void)showPreviousYear
 {   
     [calendarModel decrementYear];
+    [self.julgi release];
+    self.julgi = [[NSMutableDictionary alloc] init];
+    [self termsWithYear:[calendarModel selectedYear] andMonth:nil andLength:nil];
 	[self refreshViewWithPushDirection:kCATransitionFromTop];
 	//	[self setNeedsDisplay];
 }
@@ -342,6 +357,9 @@
 - (void)showFollowingYear
 {	
     [calendarModel incrementYear];
+    [self.julgi release];
+    self.julgi = [[NSMutableDictionary alloc] init];
+    [self termsWithYear:[calendarModel selectedYear] andMonth:nil andLength:nil];
 	[self refreshViewWithPushDirection:kCATransitionFromBottom];
 	//	[self setNeedsDisplay];
 }
@@ -445,6 +463,15 @@
 	[self.dates addObjectsFromArray:[calendarModel daysInSelectedMonth]];
 	[self.dates addObjectsFromArray:[calendarModel daysInFirstWeekOfFollowingMonth]];
 	
+    NSInteger yyyy = [calendarModel selectedYear];
+    
+    if (prevYear != yyyy) {
+        [self.julgi release];
+        self.julgi = [[NSMutableDictionary alloc] init];
+        [self termsWithYear:yyyy andMonth:nil andLength:nil];
+        Debug(@"self.julgi =  %@", self.julgi);
+    }
+    
 	//	
 	NSInteger i = 0;
 	
@@ -467,7 +494,7 @@
 		[self fetchRequestResult:[NSString stringWithFormat:@"%d. %d. %d.", y, m, d]  withEntity:@"EventData" andProperty:@"eventdate"];
 		[self fetchRequestResult:[NSString stringWithFormat:@"%d. %d. %d.", y, m, d]  withEntity:@"DiaryData" andProperty:@"writedate"];
 		
-//		[self fetchRequestResult:nil  withEntity:@"ChildData" andProperty:@"birthdaySolar"];
+        //		[self fetchRequestResult:nil  withEntity:@"ChildData" andProperty:@"birthdaySolar"];
 		
 		NSMutableDictionary *anniversaryData = [annData objectForKey:[NSString stringWithFormat:@"%d. %d.", m, d]];
 		NSMutableDictionary *addDic = [[NSMutableDictionary alloc] init];
@@ -554,6 +581,11 @@
 		
 		[lDateButton setTitle:[NSString stringWithFormat:@"%d  ", [date dayOfMonth]] forState:UIControlStateNormal];
 		
+        NSString *header = @"";
+        NSString *julgiStr = [self.julgi valueForKey:[NSString stringWithFormat:@"%d/%d", m, d]];
+        
+        Debug(@"julgi date = %d/%d : julgiStr = %@", m, d, julgiStr);
+        
 		if (i < prevMonthDays || i >= (prevMonthDays + currentMonthDays)) {
 			lunarLabel.textColor = [UIColor lightGrayColor];
 			[lDateButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
@@ -565,7 +597,7 @@
 			}
 			
 		} else {
-			if ([lDateButton.klDate todayJeulgi] != @"") {
+			if (julgiStr != nil && ![julgiStr isEqualToString:@""]) {
 				lunarLabel.textColor = [UIColor blueColor];
 			} else {
 				lunarLabel.textColor = [UIColor darkGrayColor];
@@ -590,8 +622,17 @@
 				//				}
 			}		
 		}
-		
-		NSString *header = [lDateButton.klDate todayJeulgi] != @""?[lDateButton.klDate todayJeulgi] : [NSString stringWithFormat:@"%d/%d", lDateButton.lunarDate.lunarMonth, lDateButton.lunarDate.lunarDay];
+        
+        
+        if (julgiStr == nil || [julgiStr isEqualToString:@""]) {
+            header = [header stringByAppendingFormat:@"%d/%d", lDateButton.lunarDate.lunarMonth, lDateButton.lunarDate.lunarDay];
+        } else {
+            header = [header stringByAppendingString:julgiStr];
+        }
+        
+        //		NSString *header = [lDateButton.klDate todayJeulgi] != @""?[lDateButton.klDate todayJeulgi] : [NSString stringWithFormat:@"%d/%d", lDateButton.lunarDate.lunarMonth, lDateButton.lunarDate.lunarDay];
+        
+        
 		UIFont *lunarFont = nil;
 		if ([eventDatas count] > 0 && [diaryDatas count] <= 0 && [lDateButton.anniversaryDic count] <= 0) {
 			if ([date isToday]) {			
@@ -807,7 +848,7 @@
 	} else if ([ent isEqualToString:@"ChildData"]) {
 		childDatas = [managedObjectContext executeFetchRequest:fetchedResultsController.fetchRequest error:&error];
 	}
-
+    
 	
 	
 	//	[fetchRequest release];
@@ -885,8 +926,222 @@
 	[annData release];
 	[tempData release];
 	
+    [hterms release];
+    [julgi release];
     [super dealloc];
 }
 
+#pragma mark -
+#pragma mark JULGI Methods
+- (NSArray *) tterms:(NSString *)year {
+    NSDictionary *addstime = [NSDictionary dictionaryWithObjectsAndKeys:
+                              [NSNumber numberWithInteger:1545], @"1902", [NSNumber numberWithInteger:1734], @"1903", 
+                              [NSNumber numberWithInteger:1740], @"1904", [NSNumber numberWithInteger:475], @"1906", 
+                              [NSNumber numberWithInteger:432], @"1907", [NSNumber numberWithInteger:480], @"1908", 
+                              [NSNumber numberWithInteger:462],@"1909",  [NSNumber numberWithInteger:-370], @"1915", 
+                              [NSNumber numberWithInteger:-332], @"1916", [NSNumber numberWithInteger:-335], @"1918", 
+                              [NSNumber numberWithInteger:-263],@"1919",  [NSNumber numberWithInteger:340], @"1925", 
+                              [NSNumber numberWithInteger:344], @"1927", [NSNumber numberWithInteger:2133], @"1928", 
+                              [NSNumber numberWithInteger:2112],@"1929",  [NSNumber numberWithInteger:2100], @"1930", 
+                              [NSNumber numberWithInteger:1858], @"1931", [NSNumber numberWithInteger:-400], @"1936", 
+                              [NSNumber numberWithInteger:-400], @"1937", [NSNumber numberWithInteger:-342], @"1938", 
+                              [NSNumber numberWithInteger:-300], @"1939", [NSNumber numberWithInteger:365], @"1944", 
+                              [NSNumber numberWithInteger:380], @"1945", [NSNumber numberWithInteger:400], @"1946", 
+                              [NSNumber numberWithInteger:200], @"1947", [NSNumber numberWithInteger:244], @"1948", 
+                              [NSNumber numberWithInteger:-266], @"1953", [NSNumber numberWithInteger:2600], @"1954", 
+                              [NSNumber numberWithInteger:3168], @"1955", [NSNumber numberWithInteger:3218],@"1956", 
+                              [NSNumber numberWithInteger:3366], @"1957", [NSNumber numberWithInteger:3300], @"1958", 
+                              [NSNumber numberWithInteger:3483], @"1959", [NSNumber numberWithInteger:2386], @"1960", 
+                              [NSNumber numberWithInteger:3015], @"1961", [NSNumber numberWithInteger:2090], @"1962", 
+                              [NSNumber numberWithInteger:2090], @"1963", [NSNumber numberWithInteger:2264], @"1964", 
+                              [NSNumber numberWithInteger:2370], @"1965", [NSNumber numberWithInteger:2185], @"1966", 
+                              [NSNumber numberWithInteger:2144], @"1967", [NSNumber numberWithInteger:1526], @"1968", 
+                              [NSNumber numberWithInteger:-393], @"1971", [NSNumber numberWithInteger:-430], @"1972", 
+                              [NSNumber numberWithInteger:-445], @"1973", [NSNumber numberWithInteger:-543], @"1974", 
+                              [NSNumber numberWithInteger:-393], @"1975", [NSNumber numberWithInteger:300], @"1980", 
+                              [NSNumber numberWithInteger:490], @"1981", [NSNumber numberWithInteger:400], @"1982", 
+                              [NSNumber numberWithInteger:445], @"1983", [NSNumber numberWithInteger:393], @"1984", 
+                              [NSNumber numberWithInteger:-1530], @"1987", [NSNumber numberWithInteger:-1600], @"1988", 
+                              [NSNumber numberWithInteger:-362], @"1990", [NSNumber numberWithInteger:-366], @"1991", 
+                              [NSNumber numberWithInteger:-400], @"1992", [NSNumber numberWithInteger:-449], @"1993", 
+                              [NSNumber numberWithInteger:-321], @"1994", [NSNumber numberWithInteger:-344], @"1995", 
+                              [NSNumber numberWithInteger:356], @"1999", [NSNumber numberWithInteger:480], @"2000",  
+                              [NSNumber numberWithInteger:483], @"2001", [NSNumber numberWithInteger:504], @"2002", 
+                              [NSNumber numberWithInteger:294], @"2003", [NSNumber numberWithInteger:-206], @"2007", 
+                              [NSNumber numberWithInteger:-314], @"2008", [NSNumber numberWithInteger:-466], @"2009", 
+                              [NSNumber numberWithInteger:-416], @"2010", [NSNumber numberWithInteger:-457], @"2011", 
+                              [NSNumber numberWithInteger:-313], @"2012", [NSNumber numberWithInteger:347], @"2018", 
+                              [NSNumber numberWithInteger:257], @"2020", [NSNumber numberWithInteger:351], @"2021", 
+                              [NSNumber numberWithInteger:159], @"2022", [NSNumber numberWithInteger:177], @"2023", 
+                              [NSNumber numberWithInteger:-134], @"2026", [NSNumber numberWithInteger:-340], @"2027", 
+                              [NSNumber numberWithInteger:-382], @"2028", [NSNumber numberWithInteger:-320], @"2029", 
+                              [NSNumber numberWithInteger:-470], @"2030", [NSNumber numberWithInteger:-370], @"2031", 
+                              [NSNumber numberWithInteger:-373], @"2032", [NSNumber numberWithInteger:349], @"2036", 
+                              [NSNumber numberWithInteger:523], @"2037", nil];
+    
+    NSDictionary *addttime = [NSDictionary dictionaryWithObjectsAndKeys:
+                              [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:-160], [NSNumber numberWithInteger:-14], nil], @"1919", 
+                              [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:-508], [NSNumber numberWithInteger:10], nil], @"1939", 
+                              [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:220], [NSNumber numberWithInteger:0], nil], @"1953", 
+                              [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:-2973], [NSNumber numberWithInteger:1], nil], @"1954", 
+                              [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:241], [NSNumber numberWithInteger:18], nil], @"1982", 
+                              [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:-2455], [NSNumber numberWithInteger:13], nil], @"1988", 
+                              [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:356], [NSNumber numberWithInteger:6], nil], @"2013",  
+                              [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:411], [NSNumber numberWithInteger:20], nil], @"2031", 
+                              [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInteger:399], [NSNumber numberWithInteger:0], [NSNumber numberWithInteger:-571], [NSNumber numberWithInteger:11], nil], @"2023", nil];
+    
+    return [NSArray arrayWithObjects:[addstime objectForKey:year], [addttime objectForKey:year], nil];
+}
 
+- (NSInteger) moon2valid:(NSInteger)moon
+{
+    //$moon = max($moon,1);
+    //$moon = min($moon,12);
+    NSInteger m = moon;
+    if(m < 1) m = 1;
+    else if(m > 12) m = 12;
+    
+    return m;
+}
+
+//PHP의 fmod에 해당하는 함수
+- (double) fmodWithX:(double) x andY:(double) y {
+    int div = floor(x / y);
+    
+    return x - div * y;
+}
+
+- (double) deg2valid:(double) deg
+{
+    //if($deg <= 360 && $deg >=0) return $deg;
+    //    double d = deg;
+    double d = 0.0;
+    
+    if (deg >= 0) {
+        d = [self fmodWithX:deg andY:360.0];
+    } else {
+        d = [self fmodWithX:deg andY:360.0]+360.0;
+    }
+    //(deg >= 0) ? deg % 360 : (deg % 360)+360.0;
+    
+    return d; // float degress
+}
+
+- (double) deg2solartime:(double)deg
+{
+    double retVal = [[NSString stringWithFormat:@"%.4f", deg*87658.1256] doubleValue];
+    return retVal;
+}
+
+- (NSArray *) sunlWithUTime:(long)utime andGMT:(BOOL)GMT //($utime, $GMT=FALSE, $D=0, $JD=0, $J='', $deg2rad=array())
+{
+    if(GMT) utime += 32400; // force GMT to static KST, see 946727936
+    
+    double D = utime - 946727936; // number of time
+    NSString *strD = [NSString stringWithFormat:@"%.10f", D/86400]; //  sprintf('%.10f',$D/86400); // float, number of days
+    
+    NSString *strg = [NSString stringWithFormat:@"%.10f", 357.529 + (0.98560028 * [strD doubleValue])];
+    NSString *strq = [NSString stringWithFormat:@"%.10f", 280.459 + (0.98564736 * [strD doubleValue])];
+    
+    //## fixed
+    //##
+    double g = [self deg2valid:[strg doubleValue]]; // to valid degress
+    double q = [self deg2valid:[strq doubleValue]]; // to valid degress
+    //## convert
+    //##
+    NSArray *deg2rad = [NSArray arrayWithObjects:[NSNumber numberWithDouble:(g * M_PI / 180)], [NSNumber numberWithDouble:(g * 2 * M_PI / 180)], nil];
+    
+    double sing = sin((g * M_PI / 180)); // degress
+    double sin2g = sin((g * 2 * M_PI / 180)); // degress
+    //## L is an approximation to the Sun's geocentric apparent ecliptic longitude
+    //##
+    NSString *strL = [NSString stringWithFormat:@"%.10f", q + (1.915 * sing) + (0.020*sin2g)]; // sprintf('%.10f',$q + (1.915 * $sing) + (0.020*$sin2g)); 
+    
+    double L = [self deg2valid:[strL doubleValue]]; // degress
+    double atime = [self deg2solartime:round(L)-L]; // float
+    
+    return [NSArray arrayWithObjects:[NSNumber numberWithDouble:L], [NSNumber numberWithDouble:atime], nil]; //array($L,$atime); // array, float degress, float seconds
+}
+
+- (void) termsWithYear:(NSInteger)y andMonth:(NSInteger)m andLength:(NSInteger)l {
+    NSInteger year  = y;
+    //    NSArray *sun = [[NSArray alloc] init];
+    NSInteger smoon = m;
+    NSInteger length = l;
+    //    NSMutableArray *times = [[NSMutableArray alloc] init];
+    NSDictionary *julgiDic = [[[NSDictionary alloc] init] autorelease];
+    //    $times = array();
+    
+    if (!year) {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy"];
+        
+        year = [[formatter stringFromDate:[NSDate date]] integerValue];
+        [formatter release];
+    }
+    
+    if (l == nil) {
+        length = 12;
+    }
+    
+    if (m == nil) {
+        smoon = 1;
+    }
+    //    if(!$year) $year = date('Y');
+    
+    /***
+     if($year<1902 || $year>2037)
+     {
+     echo "\nerror: invalid input $year, 1902 <= year <= 2037\n";
+     return -1;
+     }
+     ***/
+    
+    //    list($hterms,$tterms) = solar::gterms();
+    //    list($addstime,$addttime) = solar::tterms($year);
+    
+    //## mktime(7+9,36,19-64,3,20,2000), 2000-03-20 16:35:15(KST)
+    //##
+    long start = __SOLAR_START__; // start base unix timestamp
+    long tyear = __SOLAR_TYEAR__; // tropicalyear to seconds
+    long byear = __SOLAR_BYEAR__; // start base year
+    
+    start += (year - byear) * tyear;
+    
+    if(length < -12) length = -12;
+    else if(length > 12) length = 12;
+    
+    smoon = [self moon2valid:smoon];
+    NSInteger emoon = [self moon2valid:smoon+length];
+    
+    NSInteger sidx =  (min(smoon,emoon) - 1) * 2;
+    NSInteger eidx = ((max(smoon,emoon) - 1) * 2) + 1;
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"M/d"];
+    for(int i=sidx; i<=eidx; i++)
+    {
+        NSArray *ttermsArr = [self tterms:[NSString stringWithFormat:@"%d", year]];
+        
+        double time = start + tterms[i]; // $tterms[$i];
+        double atime = [[[self sunlWithUTime:time andGMT:NO] objectAtIndex:1] doubleValue];
+        if ([ttermsArr count] > 1) {
+            NSDictionary *addttimeDic = [ttermsArr objectAtIndex:1];
+            time += atime + [[ttermsArr objectAtIndex:0] longValue] + [[addttimeDic objectForKey:[NSNumber numberWithInteger:i]] integerValue];// $addttime[$i]; // re-fixed
+        } else if ([ttermsArr count] == 1) {
+            time += atime + [[ttermsArr objectAtIndex:0] longValue];// $addttime[$i]; // re-fixed
+        } else {
+            time += atime;
+        }
+        
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970:time];
+        
+        Debug(@"date = %@ : julgi = %@", [formatter stringFromDate:date], [self.hterms objectAtIndex:i]);
+        NSString *keyStr = [formatter stringFromDate:date];
+        [self.julgi setValue:[self.hterms objectAtIndex:i] forKey:keyStr];
+        //       $terms[calendar::_date('nd',$time)] = &$hterms[$i];
+        //       $times[] = $time; // fixed utime
+    }
+    [formatter release];
+}
 @end

@@ -17,23 +17,27 @@
 
 + (id) initWithCoordinate:(CLLocationCoordinate2D)coordinate {
     self = [super alloc];
-    _coordinate = coordinate;
+    [self setCoordinate:coordinate];
     return self;
 }
 
 + (id) initWithCoordinate:(CLLocationCoordinate2D)coordinate andTitle:(NSString*) title {
     self = [super alloc];
-    _coordinate = coordinate;
+    [self setCoordinate:coordinate];
     title = [title retain];
     return self;
 }
 
 + (id) initWithCoordinate:(CLLocationCoordinate2D)coordinate andTitle:(NSString*) title andSubtitle:(NSString*) subtitle {
     self = [super alloc];
-    _coordinate = coordinate;
+    [self setCoordinate:coordinate];
     title = [title retain];
     subtitle = [subtitle retain];
     return self;
+}
+
+- (void) setCoordinate:(CLLocationCoordinate2D)newCoordinate {
+    _coordinate = newCoordinate;
 }
 
 -(void) dealloc {

@@ -29,13 +29,15 @@
 	<key>CFBundleURLTypes</key>
 	<array/>
 	<key>CFBundleVersion</key>
-	<string>1.1</string>
+	<string>2.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumSystemVersion</key>
 	<string>3.1.2</string>
 	<key>NSMainNibFile</key>
 	<string>MainWindow</string>
+	<key>UIFileSharingEnabled</key>
+	<true/>
 	<key>UIInterfaceOrientation</key>
 	<string>UIInterfaceOrientationPortrait</string>
 	<key>UIStatusBarStyle</key>
@@ -46,7 +48,5 @@
 	<array/>
 	<key>UTImportedTypeDeclarations</key>
 	<array/>
-	<key>UIFileSharingEnabled</key>
-	<true/>
 </dict>
 </plist>

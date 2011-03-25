@@ -22,10 +22,11 @@
 @synthesize mapButton;
 @synthesize satButton;
 @synthesize hybButton;
+@synthesize bottomView;
 
 @synthesize managedObjectContext;
 
-const CGFloat kScrollObjHeight	= 411.0;
+const CGFloat kScrollObjHeight	= 320.0;
 const CGFloat kScrollObjWidth	= 320.0;
 //const NSUInteger kNumImages		= 8;
 
@@ -49,7 +50,7 @@ const CGFloat kScrollObjWidth	= 320.0;
 	}
 
 	// set the content size so it can be scrollable
-	[scrollView1 setContentSize:CGSizeMake((kNumImages * kScrollObjWidth), [scrollView1 bounds].size.height)];
+	[scrollView1 setContentSize:CGSizeMake((kNumImages * kScrollObjWidth), 320)];
 }
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -89,10 +90,11 @@ const CGFloat kScrollObjWidth	= 320.0;
 	[scrollView1 setCanCancelContentTouches:NO];
 	scrollView1.indicatorStyle = UIScrollViewIndicatorStyleWhite;
 	scrollView1.clipsToBounds = YES;		// default is NO, we want to restrict drawing within our scrollview
-	scrollView1.scrollEnabled = YES;
 	// pagingEnabled property default is NO, if set the scroller will stop or snap at each photo
 	// if you want free-flowing scroll, don't set this property.
 	scrollView1.pagingEnabled = YES;
+    scrollView1.scrollEnabled = NO;
+    
 	
 	// load all the images from our bundle and add them to the scroll view
 	NSUInteger kNumImages		= 0;
@@ -116,6 +118,8 @@ const CGFloat kScrollObjWidth	= 320.0;
 		}
 	}
 
+    [scrollView1 setContentSize:CGSizeMake((kNumImages * kScrollObjWidth), 320)];
+    scrollView1.frame = CGRectMake(0, 0, 320, 320);
 	
 	for (NSUInteger i = 1; i <= kNumImages; i++)
 	{
@@ -128,12 +132,13 @@ const CGFloat kScrollObjWidth	= 320.0;
 		rect.size.height = image.size.height;
 		rect.size.width = image.size.width;
 		imageView.frame = rect;
-		scrollView1.frame = CGRectMake(0, 0, 320, 460);
+        
 		imageView.tag = i;	// tag our images for later use when we place them in serial fashion
 		[scrollView1 addSubview:imageView];
 		[imageView release];
 	}
 //	[tempImageArray release];
+    scrollView1.scrollEnabled = YES;
 	[self layoutScrollImages:kNumImages];
 
 }
@@ -170,7 +175,7 @@ const CGFloat kScrollObjWidth	= 320.0;
 					[self mapViewUpdateLat:[[imageArray objectAtIndex:i] valueForKey:@"latitude"] andLon:[[imageArray objectAtIndex:i] valueForKey:@"longitude"]];
 				} else {
 					UIImage *image = [[imageArray objectAtIndex:0] valueForKey:@"image"];
-					scrollView1.frame = CGRectMake(0, 0, 320, 460);
+					scrollView1.frame = CGRectMake(0, 0, 320, 320);
 					view.frame = CGRectMake(curXLoc, 0, image.size.width, image.size.height);
 					scrollView1.backgroundColor = [UIColor blackColor];
 					scrollView1.scrollEnabled = YES;
@@ -189,11 +194,13 @@ const CGFloat kScrollObjWidth	= 320.0;
 		mapButton.hidden = NO;
 		satButton.hidden = NO;
 		hybButton.hidden = NO;
+        bottomView.hidden = YES;
 		[mapViewButton setTitle:@"사진보기" forState:UIControlStateNormal];
 	} else {
 		mapButton.hidden = YES;
 		satButton.hidden = YES;
 		hybButton.hidden = YES;
+        bottomView.hidden = NO;
 		[mapViewButton setTitle:@"지도보기" forState:UIControlStateNormal];
 	}
 	
@@ -298,6 +305,8 @@ const CGFloat kScrollObjWidth	= 320.0;
 	[mapButton release];
 	[satButton release];
 	[hybButton release];
+    
+    [bottomView release];
 	 
     [super dealloc];
 }

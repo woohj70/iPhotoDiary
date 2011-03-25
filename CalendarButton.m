@@ -16,6 +16,7 @@
 @synthesize eventArray;
 @synthesize anniversaryDic;
 @synthesize diaryArray;
+@synthesize todayJulgi;
 
 - (id)init {
 	if (self = [super init]) {
@@ -32,5 +33,6 @@
 	[eventArray release];
 	[anniversaryDic release];
 	[diaryArray release];
+//    [todayJulgi release];
 }
 @end

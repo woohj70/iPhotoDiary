@@ -13,9 +13,7 @@
 
 @implementation EditDiaryViewController
 
-@synthesize testLabel;
-@synthesize photoZone;
-@synthesize photoFrame;
+@synthesize photoZone, thumbnailView;
 @synthesize calendarViewController;
 //@synthesize saveButton;
 @synthesize titleField;
@@ -27,24 +25,209 @@
 @synthesize activityIndicator;
 //@synthesize imageData;
 
-@synthesize locManager, geoTaggedImage, mapView;
+@synthesize locManager, geoTaggedImage;
 
 @synthesize fetchedResultsController, managedObjectContext, childData, diaryData, imageArray;
 @synthesize dateFormatter;
-
+@synthesize doneButton;
 @synthesize activeView;
 @synthesize activeField;
 @synthesize photoSlideController;
 
-@synthesize imageContext;
+@synthesize imageContext, imageContextArray;
 @synthesize delegate;
+
+@synthesize wIconName;
+@synthesize locField;
+@synthesize reverseAddr, country, administrativeArea, subAdministrativeArea, locality, subLocality, thoroughfare, subThoroughfare, postalCode;
+@synthesize weatherIcon, tempHL, currTemp, city, lowTemp, highTemp, refreshWeather, currCondition, weatherDesc, dateTime;
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
         // Custom initialization
 //		self.title = @"일기 쓰기";
-		
+		enCityNameDic = [[NSDictionary alloc] initWithObjectsAndKeys://강원도
+						 @"Gangneung Si",	@"강릉시",
+						 @"Goseong-gun",	@"고성군",
+						 @"Donghae Si",	@"동해시",
+						 @"Samcheok Si",	@"삼척시",
+						 @"Sokcho Si",	@"속초시",
+						 @"Yanggu-gun",	@"양구군",
+						 @"Yangyang-gun",		@"양양군",
+						 @"Yeongwol-gun",	@"영월군",
+						 @"Wonju Si",	@"원주시",
+						 @"Inje-gun",	@"인제군",
+						 @"Jeongseon-gun",	@"정선군",
+						 @"Cheorwon-gun",	@"철원군",
+						 @"Chuncheon Si",	@"춘천시",
+						 @"Taebaek Si",	@"태백시",
+						 @"Pyeongchang-gun",	@"평창군",
+						 @"Hongcheon-gun",	@"홍천군",
+						 @"Hwacheon-gun",	@"화천군",
+						 @"Hoengseong-gun",	@"횡성군",
+						 
+						 //경기도
+						 @"Gapyeong-gun",	@"가평군",
+						 @"Goyang Si",	@"고양시",
+						 @"Gwacheon Si",	@"과천시",
+						 @"Gwangmyeong Si",	@"광명시",
+						 @"Gwangju Si",	@"광주시",
+						 @"Guri Si",		@"구리시",
+						 @"Gunpo Si",	@"군포시",
+						 @"Gimpo Si",	@"김포시",
+						 @"Namyangju Si",	@"남양주시",
+						 @"Dongducheon Si",	@"동두천시",
+						 @"Bucheon Si",	@"부천시",
+						 @"Seongnam Si",	@"성남시",
+						 @"Suwon Si",	@"수원시",
+						 @"Siheung Si",	@"시흥시",
+						 @"Ansan Si",	@"안산시",
+						 @"Anseong Si",	@"안성시",
+						 @"Anyang Si",	@"안양시",
+						 @"Yangju Si",	@"양주시",
+						 @"Yangpyeong-gun",	@"양평군",
+						 @"Yeoju-gun",	@"여주군",
+						 @"Yeoncheon-gun",	@"연천군",
+						 @"Osan Si",	@"오산시",
+						 @"Yongin Si",	@"용인시",
+						 @"Uiwang Si",	@"의왕시",
+						 @"Uijeongbu Si",	@"의정부시",
+						 @"Icheon Si",	@"이천시",
+						 @"Paju Si",		@"파주시",
+						 @"Pyeongtaek Si",	@"평택시",
+						 @"Pocheon Si",	@"포천시",
+						 @"Hanam Si",	@"하남시",
+						 @"Hwaseong Si",	@"화성시",
+						 
+						 //경남
+						 @"Geoje Si",	@"거제시",
+						 @"Geochang-gun",	@"거창군",
+						 @"Goseong-gun",	@"고성군",
+						 @"Gimhae Si",	@"김해시",
+						 @"Namhae-gun",	@"남해군",
+						 @"Miryang Si",	@"밀양시",
+						 @"Sacheon Si",	@"사천시",
+						 @"Sancheong-gun",	@"산청군",
+						 @"Yangsan Si",	@"양산시",
+						 @"Uiryeong-gun",	@"의령군",
+						 @"Jinju Si",	@"진주시",
+						 @"Changnyeong-gun",	@"창녕군",
+						 @"Changwon Si",	@"창원시",
+						 @"Tongyeong Si",	@"통영시",
+						 @"Hadong-gun",	@"하동군",
+						 @"Haman-gun",	@"함안군",
+						 @"Hamyang-gun",	@"함양군",
+						 @"Hapcheon-gun", @"합천군",
+						 
+						 //경북
+						 @"Gyeongsan Si",	@"경산시",
+						 @"Gyeongju Si",	@"경주시",
+						 @"Goryeong-gun",	@"고령군",
+						 @"Gumi Si",	@"구미시",
+						 @"Gunwi-gun",	@"군위군",
+						 @"Kimcheon Si",	@"김천시",
+						 @"Mungyeong Si",	@"문경시",
+						 @"Bonghwa-gun",	@"봉화군",
+						 @"Sangju Si",	@"상주시",
+						 @"Seongju-gun",	@"성주군",
+						 @"Andong Si",	@"안동시",
+						 @"Yeongdeok-gun",	@"영덕군",
+						 @"Yeongyang-gun",	@"영양군",
+						 @"Yeongju Si",	@"영주시",
+						 @"Yeongcheon Si",	@"영천시",
+						 @"Yecheon-gun",	@"예천군",
+						 @"Ulleung-gun",	@"울릉군",
+						 @"Uljin-gun",	@"울진군",
+						 @"Uiseong-gun",	@"의성군",
+						 @"Cheongdo-gun",	@"청도군",
+						 @"Cheongsong-gun",	@"청송군",
+						 @"Chilgok-gun",	@"칠곡군",
+						 @"Pohang Si",	@"포항시",
+						 
+						 @"Gwangju",	@"광주광역시",
+						 @"Daegu",		@"대구광역시",
+						 @"Daejeon",	@"대전광역시",
+						 @"Busan",		@"부산광역시",
+						 @"Seoul",		@"서울특별시",
+						 @"Ulsan",		@"울산광역시",
+						 @"Incheon",	@"인천광역시",
+						 
+                         // 전남
+						 @"Gangjin-gun",	@"강진군",
+						 @"Goheung-gun",	@"고흥군",
+						 @"Gokseong-gun",	@"곡성군",
+						 @"Gwangyang Si",	@"광양시",
+						 @"Gurye-gun",	@"구례군",
+						 @"Naju Si",	@"나주시",
+						 @"Damyang-gun",	@"담양군",
+						 @"Mokpo Si",	@"목포시",
+						 @"Muan-gun",	@"무안군",
+						 @"Boseong-gun",	@"보성군",
+						 @"Suncheon Si",	@"순천시",
+						 @"Sinan-gun",	@"신안군",
+						 @"Yeosu Si",	@"여수시",
+						 @"Yeonggwang-gun",	@"영광군",
+						 @"Yeongam-gun",	@"영암군",
+						 @"Wando-gun",	@"완도군",
+						 @"Jangseong-gun",	@"장성군",
+						 @"Jangheung-gun",	@"장흥군",
+						 @"Jindo-gun",	@"진도군",
+						 @"Hampyeong-gun",	@"함평군",
+						 @"Haenam-gun",	@"해남군",
+						 @"Hwasun-gun",	@"화순군",
+						 
+						 //전북
+						 @"Gochang-gun",	@"고창군",
+						 @"Gunsan Si",	@"군산시",
+						 @"Gimje Si",	@"김제시",
+						 @"Namwon Si",	@"남원시",
+						 @"Muju-gun",	@"무주군",
+						 @"Buan-gun",	@"부안군",
+						 @"Sunchang-gun",	@"순창군",
+						 @"Wanju-gun",	@"완주군",
+						 @"Iksan Si",	@"익산시",
+						 @"Imsil-gun",	@"임실군",
+						 @"Jangsu-gun",	@"장수군",
+						 @"Jeonju Si",	@"전주시",
+						 @"Jeongeup Si",	@"정읍시",
+						 @"Jinan-gun",	@"진안군",
+						 
+						 //제주
+						 @"Seogwipo Si",	@"서귀포시",
+						 @"Jeju Si",	@"제주시",
+						 
+						 //충남
+						 @"Gyeryong Si",	@"계룡시",
+						 @"Gongju Si",	@"공주시",
+						 @"Geumsan-gun",	@"금산군",
+						 @"Nonsan Si",	@"논산시",
+						 @"Dangjin-gun",	@"당진군",
+						 @"Boryeong Si",	@"보령시",
+						 @"Buyeo-gun",	@"부여군",
+						 @"Seosan Si",	@"서산시",
+						 @"Seocheon-gun",	@"서천군",
+						 @"Asan Si",	@"아산시",
+						 @"Yeongi-gun",	@"연기군",
+						 @"Yesan-gun",	@"예산군",
+						 @"Cheonan Si",	@"천안시",
+						 @"Cheongyang-gun",	@"청양군",
+						 @"Taean-gun",	@"태안군",
+						 @"Hongseong-gun",	@"홍성군",
+						 
+						 //충북
+						 @"Goesan-gun", @"괴산군",
+						 @"Danyang-gun",	@"단양군",
+						 @"Boeun-gun",	@"보은군",
+						 @"Yeongdong-gun",	@"영동군",
+						 @"Okcheon-gun",	@"옥천군",
+						 @"Eumseong-gun",	@"음성군",
+						 @"Jecheon Si",	@"제천시",
+						 @"Jeungpyeong-gun",	@"증평군",
+						 @"Jincheon-gun",	@"진천군",
+						 @"Cheongwon-gun",	@"청원군",
+						 @"Cheongju Si",	@"청주시",
+						 @"Chungju Si",	@"충주시", nil];
 		
 		keyboardShown = NO;
 		isSetCoord = NO;
@@ -91,6 +274,16 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    repeatCnt = 0;
+	currCondCnt = 0;
+	iconRepeatCnt = 0;
+    
+    isFirstWeatherGet = NO;
+    
+    CGAffineTransform trans = CGAffineTransformMakeRotation(M_PI / 180 * -8);
+	self.thumbnailView.transform = trans;
+    
 	CGRect labelFrame = CGRectMake(0.0, 0.0, 170.0, 40.0); 
 	UILabel *label = [[[UILabel alloc] initWithFrame:labelFrame] autorelease]; 
 	label.font = [UIFont boldSystemFontOfSize:18]; 
@@ -121,7 +314,7 @@
     [self setViewInScrollView];
 	
 	[self.view addSubview:activityIndicator];
-	
+//	[activityIndicator startAnimating];
 	isLocation = NO;
 	
 //	mapView.frame = CGRectMake(160, 41, 145, 192);
@@ -140,16 +333,20 @@
 		exit(-1);  // Fail
 	}
 	
-	imageArray = [[NSMutableArray alloc] initWithCapacity:8];
+	self.imageArray = [[NSMutableArray alloc] initWithCapacity:8];
+    self.imageContextArray = [[NSMutableArray alloc] init];
 	
 	if (diaryData != nil) {
 		[self setDiaryDataFields];
 	} else {
-		[mapView setShowsUserLocation:YES];
+        [activityIndicator startAnimating];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy년 MM월 dd일 EEEE"];
+        self.dateTime.text = [formatter stringFromDate:[NSDate date]];
+        [formatter release];
 		[self fetchRequestResult:[AppMainViewController selectedChildName]];
 	}
 	
-	[mapView setShowsUserLocation:YES];
 	locManager = [[CLLocationManager alloc] init];
 	[locManager setDelegate:self];
 	[locManager setDesiredAccuracy:kCLLocationAccuracyBest];
@@ -163,15 +360,15 @@
 	if (diaryData != nil) {
 		cameralButton.hidden = YES;
 		imageViewButton.hidden = NO;
-		imageViewButton.frame = CGRectMake(9, 203, 135, 26);
-	}else if ([imageArray count] > 0 || isSetCoord) {
+//		imageViewButton.frame = CGRectMake(9, 203, 135, 26);
+	} else if ([self.imageArray count] > 0 || isSetCoord) {
 		imageViewButton.hidden = NO;
 		cameralButton.hidden = NO;
-		cameralButton.frame = CGRectMake(9, 203, 63, 26);
+//		cameralButton.frame = CGRectMake(9, 203, 63, 26);
 	} else {
-		imageViewButton.hidden = YES;
+		imageViewButton.hidden = NO;
 		cameralButton.hidden = NO;
-		cameralButton.frame = CGRectMake(9, 203, 135, 26);
+//		cameralButton.frame = CGRectMake(9, 203, 135, 26);
 	}
 }
 /*
@@ -194,12 +391,34 @@
 
 - (void)setDiaryDataFields {
 	self.titleField.text = diaryData.tag;
-	self.photoZone.image = diaryData.thumbnailImage;
-	self.contentView.text = diaryData.content;
-	
-	NSManagedObjectContext *imageContext = [diaryData.image anyObject];
-	latitude = [[imageContext valueForKey:@"latitude"] doubleValue];
-	longitude = [[imageContext valueForKey:@"longitude"] doubleValue];
+    self.thumbnailView.image = diaryData.thumbnailImage;
+    self.contentView.text = [NSString stringWithFormat:@"%@", diaryData.content];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy년 MM월 dd일 EEEE"];
+    self.dateTime.text = [formatter stringFromDate:diaryData.writedate];
+    [formatter release];
+    
+    self.weatherDesc.text =  diaryData.weatherDesc;
+    self.weatherIcon.image = [UIImage imageNamed:diaryData.weatherIcon];
+    self.locField.text = diaryData.reverseAddr;
+//	self.photoZone.image = diaryData.thumbnailImage;
+/*	
+    CGSize contentSize = [diaryData.content sizeWithFont:self.contentView.font constrainedToSize:CGSizeMake(self.contentView.frame.size.width, self.contentView.frame.size.height) lineBreakMode:YES];
+    Debug(@"content height = %f", contentSize.height);
+    self.contentView.text = [NSString stringWithFormat:@"%@\n%f", diaryData.content, contentSize.height];
+  
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(5.0f, contentSize.height + 10.0f, 150.0f, 150.0f)];
+    imageView.image = diaryData.thumbnailImage;
+    [self.contentView addSubview:imageView];
+    [imageView release];
+*/
+ 
+//    [self.contentView setContentOffset:CGPointMake(0.0f, contentSize.height + 10.0f + 150.f) animated:YES];
+    
+//	NSManagedObjectContext *imageContext = [diaryData.image anyObject];
+	latitude = [[diaryData valueForKey:@"latitude"] doubleValue];
+	longitude = [[diaryData valueForKey:@"longitude"] doubleValue];
 	Debug(@"setDiaryDataFields : lat = %f. lon = %f", shareLoc.latitude, shareLoc.longitude);
 }
 
@@ -380,21 +599,25 @@
 //	}
 	
 	if ( [info objectForKey:@"UIImagePickerControllerEditedImage"] ) {
-		photoZone.image = [info objectForKey:@"UIImagePickerControllerEditedImage"];
+		self.thumbnailView.image = [info objectForKey:@"UIImagePickerControllerEditedImage"];
 		geoTaggedImage = [info objectForKey:@"UIImagePickerControllerEditedImage"];
 	} else {
-		photoZone.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+		self.thumbnailView.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
 		geoTaggedImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
 	}
 	
-//	[imageArray addObject:(UIImage *)geoTaggedImage];
+	[self.imageArray addObject:(UIImage *)geoTaggedImage];
 
 	//Image 관련 데이터 저장 /////////////////////////////////////////////
 	imageContext = [NSEntityDescription insertNewObjectForEntityForName:@"DiaryImage" inManagedObjectContext:managedObjectContext];
 	
 	// Set the image for the image managed object.
 	[imageContext setValue:geoTaggedImage forKey:@"image"];
-	
+    [imageContext setValue:[NSString stringWithFormat:@"%f", latitude] forKey:@"latitude"];
+    [imageContext setValue:[NSString stringWithFormat:@"%f", longitude] forKey:@"longitude"];
+    
+	[self.imageContextArray addObject:imageContext];
+    
 	while (!isLocation) {
 		Debug(@"start Finding");
 		[self findLocation];	
@@ -414,18 +637,495 @@
 	Debug(@"findLocation==============================================");
 	if (isLocation) {
 		Debug(@"findLocation : isLocation YES==============================================");
-		[cameralButton setTitle:@"사진" forState:UIControlStateNormal];
+//		[cameralButton setTitle:@"사진" forState:UIControlStateNormal];
 	} else {
 		Debug(@"findLocation : isLocation NO==============================================");
 		wasFound = NO;
 		
-		[activityIndicator startAnimating];
-		[cameralButton setTitle:@"위치 정보 검색 중..." forState:UIControlStateNormal];
+//		[activityIndicator startAnimating];
+//		[cameralButton setTitle:@"위치 정보 검색 중..." forState:UIControlStateNormal];
 		[locManager startUpdatingLocation];
 	}
 	
 	isLocation = !isLocation;
 }
+
+#pragma mark -
+#pragma mark MKReverseGeocoderDelegate
+
+- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error {
+	Debug(@"didFailWithError");
+	[geocoder cancel];
+	[geocoder autorelease];
+}
+
+- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark {
+	Debug(@"didFindPlacemark");
+	NSString *str = @"";
+    NSString *str2 = @"";
+	
+	self.administrativeArea = @"";
+	self.subAdministrativeArea = @"";
+	self.locality = @"";
+	self.subLocality = @"";
+	self.thoroughfare = @"";
+	self.subThoroughfare = @"";
+    //	str = [str stringByAppendingFormat:@"%@", placemark.country];
+    //	country = placemark.country;
+	
+	if([placemark.administrativeArea length] > 0)
+	{
+//		str = [str stringByAppendingFormat:@" "];
+		str = [str stringByAppendingFormat:@"%@", placemark.administrativeArea];
+        str2 = [str2 stringByAppendingFormat:@" "];
+		str2 = [str2 stringByAppendingFormat:@"%@", placemark.administrativeArea];
+		self.administrativeArea = placemark.administrativeArea;
+	}
+	
+	if([placemark.subAdministrativeArea length] > 0)
+	{
+		str = [str stringByAppendingFormat:@" "];
+		str = [str stringByAppendingFormat:@"%@", placemark.subAdministrativeArea];
+        str2 = [str2 stringByAppendingFormat:@" "];
+		str2 = [str2 stringByAppendingFormat:@"%@", placemark.subAdministrativeArea];
+		self.subAdministrativeArea = placemark.subAdministrativeArea;
+	}
+	
+	if([placemark.locality length] > 0)
+	{
+		str = [str stringByAppendingFormat:@" "];
+		str = [str stringByAppendingFormat:@"%@", placemark.locality];
+        str2 = [str2 stringByAppendingFormat:@" "];
+		str2 = [str2 stringByAppendingFormat:@"%@", placemark.locality];
+		self.locality = placemark.locality;
+	}
+	
+	if([placemark.subLocality length] > 0)
+	{
+		str = [str stringByAppendingFormat:@" "];
+		str = [str stringByAppendingFormat:@"%@", placemark.subLocality];
+        str2 = [str2 stringByAppendingFormat:@" "];
+		str2 = [str2 stringByAppendingFormat:@"%@", placemark.subLocality];
+		self.subLocality = placemark.subLocality;
+	}
+	
+	if([placemark.thoroughfare length] > 0)
+	{
+		str = [str stringByAppendingFormat:@" "];
+		str = [str stringByAppendingFormat:@"%@", placemark.thoroughfare];
+        str2 = [str2 stringByAppendingFormat:@" "];
+		str2 = [str2 stringByAppendingFormat:@"%@", placemark.thoroughfare];
+		self.thoroughfare = placemark.thoroughfare;
+	}
+	
+	if([placemark.subThoroughfare length] > 0)
+	{
+		str = [str stringByAppendingFormat:@" "];
+		str = [str stringByAppendingFormat:@"%@", placemark.subThoroughfare];
+		self.subThoroughfare = placemark.subThoroughfare;
+	}
+	
+	self.reverseAddr = str;    // 최종 주소
+    //	if (str != nil && !isFindLocation && !isProccessFileSave) {
+    //		[self insertGPSData];
+    //	}
+	
+	if (str != nil && ![str isEqualToString:@""]) {
+		self.locField.text = str2;
+		
+        //		if (!isGetWeatherEnd) {
+        if ([[[NSLocale currentLocale] identifier] isEqualToString:@"ko_KR"]) {
+            //				if ([self.locality isEqualToString:@"서울특별시"] ||
+            //					[self.locality isEqualToString:@"부산광역시"] ||
+            //					[self.locality isEqualToString:@"인천광역시"] ||
+            //					[self.locality isEqualToString:@"대구광역시"] ||
+            //					[self.locality isEqualToString:@"광주광역시"] ||
+            //					[self.locality isEqualToString:@"대전광역시"] ||
+            //					[self.locality isEqualToString:@"울산광역시"]) {
+            //					postalCode = [enCityNameDic objectForKey:self.locality];
+            //				} else {
+            NSString *tempLocal = [enCityNameDic objectForKey:self.locality];
+            
+            Debug(@"postalCode = %@ : tempLocal = %@", self.postalCode, tempLocal);
+            
+            if (![tempLocal isEqualToString:self.postalCode]) {
+                self.postalCode = tempLocal;
+                [self refreshWeatherClicked];
+            } else {
+                self.postalCode = tempLocal;
+            }
+            
+            //				}
+        } else {
+            NSString *tempLocal = [NSString stringWithFormat:@"%@,%@",self.locality, self.administrativeArea?self.administrativeArea:@""];
+            
+            if (![tempLocal isEqualToString:self.postalCode]) {
+                self.postalCode = tempLocal;
+                [self refreshWeatherClicked];
+            } else {
+                self.postalCode = tempLocal;
+            }
+            
+            self.postalCode = tempLocal;
+        }
+        
+        Debug(@"postalCode = %@", self.postalCode);
+        
+        if (!isFirstWeatherGet) {
+            Debug(@"First Weather Check Start!!!");
+            [self getWOEID];
+            isFirstWeatherGet = YES;
+        }
+        //		}
+		self.locField.text = str2;//self.reverseAddr;
+		[geocoder release];
+	}
+    
+	Debug(@"reversAddr = %@", reverseAddr);
+}
+
+#pragma mark -
+#pragma mark Get weather info from google
+
+- (void) getWOEID {
+	Debug(@"getWOEID");
+	Debug(@"getWOEID postalCode = http://www.google.co.kr/ig/api?weather=%@", self.postalCode);
+	NSString* weatherURLString = nil;
+	if ([[[NSLocale currentLocale] identifier] isEqualToString:@"ko_KR"]) {
+		weatherURLString = [NSString stringWithFormat:@"http://www.google.co.kr/ig/api?weather=%@", self.postalCode];
+	} else {
+		weatherURLString = [NSString stringWithFormat:@"http://www.google.com/ig/api?weather=%@", self.postalCode];
+	}
+    
+    weatherURLString = [weatherURLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+	NSURL *weatherURL = [NSURL URLWithString:weatherURLString];
+	NSError *error = nil;
+	NSString *tempForWeather = [NSString stringWithContentsOfURL:weatherURL encoding:-2147481280 error:&error];
+	Debug(@"tempForWeather = %@", tempForWeather);
+	[self loadUnknownXML:tempForWeather];
+	/*
+	 http://www.google.co.kr/ig/api?weather=	 
+     NSString* woeidURLString = [NSString stringWithFormat:@"http://www.geomojo.org/cgi-bin/reversegeocoder.cgi?long=%f&lat=%f", longitude, latitude];
+     NSURL *woeidURL = [NSURL URLWithString:woeidURLString];
+     NSString *tempForwoeid = [NSString stringWithContentsOfURL:woeidURL];
+     Debug(@"tempForwoeid = %@", tempForwoeid);
+     TBXML* woeidXML = [[TBXML alloc] initWithXMLString:tempForwoeid];
+     TBXMLElement *woeid = [TBXML childElementNamed:@"woeid" parentElement:woeidXML.rootXMLElement];
+     NSString *woeidStr = [TBXML textForElement:woeid];
+     Debug(@"woeidStr = %@", woeidStr);
+     [woeidXML release];
+     
+     NSString* weatherURLString = [NSString stringWithFormat:@"http://weather.yahooapis.com/forecastrss?w=%@&u=c",woeidStr];
+     NSURL *weatherURL = [NSURL URLWithString:weatherURLString];
+     NSString *tempForWeather = [NSString stringWithContentsOfURL:weatherURL];
+     Debug(@"tempForWeather = %@", tempForWeather);
+     
+     [self loadUnknownXML:tempForWeather];
+     */
+	
+	
+    //	TBXMLElement *condition = [TBXML childElementNamed:@"yweather" parentElement:woeidXML.rootXMLElement];
+    //	[self traverseElement:condition];
+    //	woeidXML = [[TBXML alloc] initWithXMLString:tempForWeather];
+    //	TBXMLElement *condition = [TBXML childElementNamed:@"yweather:condition" parentElement:woeidXML.rootXMLElement];
+    //	NSString *attrVal = [TBXML valueOfAttributeNamed:@"text" forElement:condition];
+    //	Debug(@"attrVal = %@", attrVal);
+	isGetWeatherEnd = YES;
+	repeatCnt = 0;
+	iconRepeatCnt = 0;
+	currCondCnt = 0;
+}
+
+- (void)loadUnknownXML:(NSString *)xmlString {
+	// Load and parse the books.xml file
+	lowTemp = @"";
+	highTemp = @"";
+	
+	TBXML *tbxml = [[TBXML tbxmlWithXMLString:xmlString] retain];
+	
+	// If TBXML found a root node, process element and iterate all children
+	if (tbxml.rootXMLElement) {
+        [activityIndicator stopAnimating];
+        [activityIndicator removeFromSuperview];
+		[self traverseElement:tbxml.rootXMLElement];
+//		[self saveWeatherInfo];
+	}
+	
+	// release resources
+	[tbxml release];
+    //	[locManager stopUpdatingLocation];
+}
+
+- (void) traverseElement:(TBXMLElement *)element {
+    //	ShootingMyDayAppDelegate *appDelegate = (ShootingMyDayAppDelegate *)[[UIApplication sharedApplication] delegate];
+	do {
+		// Display the name of the element
+        //		NSLog(@"%@",[TBXML elementName:element]);
+		
+		if ([[[NSLocale currentLocale] identifier] isEqualToString:@"ko_KR"]) {
+			if ([[TBXML elementName:element] isEqualToString:@"temp_c"]) {
+				Debug(@"temp_c");
+				// Obtain first attribute from element
+				TBXMLAttribute * attribute = element->firstAttribute;
+				
+				// if attribute is valid
+				while (attribute) {
+					// Display name and value of attribute to the log window
+					//				NSLog(@"%@->%@ = %@",
+					//					  [TBXML elementName:element],
+					//					  [TBXML attributeName:attribute],
+					// 					  [TBXML attributeValue:attribute]);
+					
+					if ([[TBXML attributeName:attribute] isEqualToString:@"data"]) {
+						//℉
+						int tempc = [[TBXML attributeValue:attribute] integerValue];
+												
+						self.currTemp = [NSString stringWithFormat:@"%d℃", tempc];
+                        //						appDelegate.currentTemp = [NSString stringWithFormat:@"%@℃", [TBXML attributeValue:attribute]];
+					}
+					// Obtain the next attribute
+					attribute = attribute->next;
+				}
+				
+			}
+		} else {
+			if ([[TBXML elementName:element] isEqualToString:@"temp_f"]) {
+				Debug(@"temp_c");
+				// Obtain first attribute from element
+				TBXMLAttribute * attribute = element->firstAttribute;
+				
+				// if attribute is valid
+				while (attribute) {
+					// Display name and value of attribute to the log window
+					//				NSLog(@"%@->%@ = %@",
+					//					  [TBXML elementName:element],
+					//					  [TBXML attributeName:attribute],
+					// 					  [TBXML attributeValue:attribute]);
+					
+					if ([[TBXML attributeName:attribute] isEqualToString:@"data"]) {
+						
+						int tempc = round(([[TBXML attributeValue:attribute] integerValue] - 32) / 1.8);
+						
+						
+						
+						//℉
+						self.currTemp = [NSString stringWithFormat:@"%@℉", [TBXML attributeValue:attribute]];
+                        //						appDelegate.currentTemp = [NSString stringWithFormat:@"%@℉", [TBXML attributeValue:attribute]];
+					}
+					// Obtain the next attribute
+					attribute = attribute->next;
+				}
+				
+			}
+		}
+        
+		if ([[TBXML elementName:element] isEqualToString:@"condition"]) {
+			Debug(@"city");
+			// Obtain first attribute from element
+			TBXMLAttribute * attribute = element->firstAttribute;
+			
+			// if attribute is valid
+			while (attribute) {
+				// Display name and value of attribute to the log window
+				//				NSLog(@"%@->%@ = %@",
+				//					  [TBXML elementName:element],
+				//					  [TBXML attributeName:attribute],
+				//					  [TBXML attributeValue:attribute]);
+				
+				if ([[TBXML attributeName:attribute] isEqualToString:@"data"] && currCondCnt == 0) {
+					//℉
+					if ([TBXML attributeValue:attribute] != nil && ![[TBXML attributeValue:attribute] isEqualToString:@""]) {
+						self.currCondition = [TBXML attributeValue:attribute];
+						//					appDelegate.weatherDesc = [TBXML attributeValue:attribute];
+						currCondCnt++;
+					}
+					
+				}
+				// Obtain the next attribute
+				attribute = attribute->next;
+			}
+			
+		} else if ([[TBXML elementName:element] isEqualToString:@"city"]) {
+			Debug(@"city");
+			// Obtain first attribute from element
+			TBXMLAttribute * attribute = element->firstAttribute;
+			
+			// if attribute is valid
+			while (attribute) {
+				// Display name and value of attribute to the log window
+                //				NSLog(@"%@->%@ = %@",
+                //					  [TBXML elementName:element],
+                //					  [TBXML attributeName:attribute],
+                //					  [TBXML attributeValue:attribute]);
+				
+				if ([[TBXML attributeName:attribute] isEqualToString:@"data"]) {
+					//℉
+                    Debug(@"self.locality = %@", self.locality);
+					self.city = self.locality;//[TBXML attributeValue:attribute];
+				}
+				// Obtain the next attribute
+				attribute = attribute->next;
+			}
+			
+		} else if ([[TBXML elementName:element] isEqualToString:@"low"] && repeatCnt < 2) {
+			Debug(@"low");
+			// Obtain first attribute from element
+			TBXMLAttribute * attribute = element->firstAttribute;
+			
+			// if attribute is valid
+			while (attribute) {
+				// Display name and value of attribute to the log window
+                //				NSLog(@"%@->%@ = %@",
+                //					  [TBXML elementName:element],
+                //					  [TBXML attributeName:attribute],
+                //					  [TBXML attributeValue:attribute]);
+				
+				if ([[TBXML attributeName:attribute] isEqualToString:@"data"]) {
+					//℉
+                    //				if ([[[NSLocale currentLocale] identifier] isEqualToString:@"ko_KR"]) {
+                    //					NSInteger f = [[TBXML attributeValue:attribute] integerValue];
+                    //					NSInteger c = round((f - 32) / 1.8);
+                    //					lowTemp = [NSString stringWithFormat:@"%d", c];
+                    //				} else {
+                    lowTemp = [TBXML attributeValue:attribute];
+                    //				}
+                    
+					
+					repeatCnt++;
+                    //					Debug(@"lowTemp = %@ : repeatCnt = %d", lowTemp, repeatCnt);
+				}
+				// Obtain the next attribute
+				attribute = attribute->next;
+			}
+			
+		} else if ([[TBXML elementName:element] isEqualToString:@"high"] && repeatCnt < 2) {
+			Debug(@"high");
+			// Obtain first attribute from element
+			TBXMLAttribute * attribute = element->firstAttribute;
+			
+			// if attribute is valid
+			while (attribute) {
+				// Display name and value of attribute to the log window
+                //				NSLog(@"%@->%@ = %@",
+                //					  [TBXML elementName:element],
+                //					  [TBXML attributeName:attribute],
+                //					  [TBXML attributeValue:attribute]);
+				
+				if ([[TBXML attributeName:attribute] isEqualToString:@"data"]) {
+					//℉
+                    //				if ([[[NSLocale currentLocale] identifier] isEqualToString:@"ko_KR"]) {
+                    //					NSInteger f = [[TBXML attributeValue:attribute] integerValue];
+                    //					NSInteger c = round((f - 32) / 1.8);
+                    //					highTemp = [NSString stringWithFormat:@"%d", c];
+                    //				} else {
+                    highTemp = [TBXML attributeValue:attribute];
+                    //				}
+					
+					repeatCnt++;
+                    //					Debug(@"highTemp = %@ : repeatCnt = %d", highTemp, repeatCnt);
+				}
+				// Obtain the next attribute
+				attribute = attribute->next;
+			}
+			
+		} else if ([[TBXML elementName:element] isEqualToString:@"icon"] && iconRepeatCnt == 0) {
+			Debug(@"icon");
+			// Obtain first attribute from element
+			TBXMLAttribute * attribute = element->firstAttribute;
+			Debug(@"icon2");			// if attribute is valid
+			while (attribute) {
+				// Display name and value of attribute to the log window
+				//				NSLog(@"%@->%@ = %@",
+				//					  [TBXML elementName:element],
+				//					  [TBXML attributeName:attribute],
+				//					  [TBXML attributeValue:attribute]);
+				Debug(@"icon3");
+				if ([[TBXML attributeName:attribute] isEqualToString:@"data"]) {
+					Debug(@"icon4");
+					NSString* iconURLString = [TBXML attributeValue:attribute]; //[NSString stringWithFormat:@"http://www.google.com%@", [TBXML attributeValue:attribute]];
+					
+					Debug(@"iconURLString = %@", iconURLString);
+					if (iconURLString != nil && ![iconURLString isEqualToString:@""]) {
+						NSRange fStart = [iconURLString rangeOfString:@"/" options:NSBackwardsSearch];
+						NSString* iconName = [iconURLString substringFromIndex:fStart.location + 1];
+						NSRange fEnd = [iconName rangeOfString:@"." options:NSBackwardsSearch];
+						//					Debug(@"iconName = %@", iconName);
+						//					Debug(@"only nam = %@", [iconName substringToIndex:fEnd.location]);
+						self.weatherIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", [iconName substringToIndex:fEnd.location]]];
+						//					NSString* img4 = [NSString stringWithFormat:@"<html><head></head><body style=\"margin:0\"><image src='%@' width=40 height=40 margin=0 padding=0></body></html>",iconURLString];
+						//					[weatherIcon setScalesPageToFit:NO];
+						//					weatherIcon.contentMode = UIViewContentModeScaleToFill;
+						//					[weatherIcon loadHTMLString:img4 baseURL:nil];
+						self.wIconName = [NSString stringWithFormat:@"%@.png", [iconName substringToIndex:fEnd.location]];
+						
+						iconRepeatCnt++;
+					}
+					
+				}
+                
+				// Obtain the next attribute
+				attribute = attribute->next;
+			}
+			
+		}
+        
+		// if the element has child elements, process them
+		if (element->firstChild) 
+            [self traverseElement:element->firstChild];
+		
+		// Obtain next sibling element
+	} while ((element = element->nextSibling));  
+	Debug(@"set HL start");
+	Debug(@"lowTemp = %@ : highTemp = %@", lowTemp, highTemp);
+	
+	if ([[[NSLocale currentLocale] identifier] isEqualToString:@"ko_KR"]) {
+		self.tempHL = [NSString stringWithFormat:@"L:%@℃  H:%@℃", lowTemp, highTemp];
+	} else {
+		self.tempHL = [NSString stringWithFormat:@"L:%@℉  H:%@℉", lowTemp, highTemp];
+	}
+    
+    if (!modifyMode) {
+        self.weatherDesc.text = [NSString stringWithFormat:@"%@  %@", self.currCondition, self.currTemp];
+    }
+    
+	Debug(@"set HL end");
+}
+
+/*
+- (void) saveWeatherInfo {
+	Debug(@"Save WeatherInfo");
+	WeatherData *wData = [NSEntityDescription insertNewObjectForEntityForName:@"WeatherData" inManagedObjectContext:self.managedObjectContext];
+	
+	NSDate *now = [NSDate date];
+	
+    
+	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy. MM. dd."];
+	NSString *conditionDate = [formatter stringFromDate:now];
+    
+    [formatter setDateFormat:@"yyyy. MM."];
+	NSString *sectionDate = [formatter stringFromDate:now];
+	
+    [formatter release];
+	
+	[wData setValue:now forKey:@"weatherDate"];
+	[wData setValue:sectionDate forKey:@"sectionDate"];
+	[wData setValue:conditionDate forKey:@"conditionDate"];
+	[wData setValue:self.city.text forKey:@"area"];
+	[wData setValue:self.currTemp.text forKey:@"currentTemparature"];
+	[wData setValue:self.tempHL.text forKey:@"lhTemparature"];
+	[wData setValue:wIconName forKey:@"iconURL"];
+	[wData setValue:self.currCondition.text forKey:@"weatherDescription"];
+	
+	NSError	*error = nil;
+	if (![self.managedObjectContext save:&error]) {
+
+        //		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+		abort();
+	}
+}
+*/
 
 #pragma mark -
 #pragma mark CLLocationManagerDelegate
@@ -439,7 +1139,6 @@
 	}
 
 	CLLocationCoordinate2D loc = [newLocation coordinate];
-
 	if (isCameraShot) {
 		Debug(@"diaryData is nil==============================================");
 		shareLoc.latitude = loc.latitude;
@@ -456,12 +1155,12 @@
 			if (isSetCoord) {
 				Debug(@"setValue latitude = %f, longitude = %f", latitude, longitude);
 				
-				[imageContext setValue:[NSString stringWithFormat:@"%f", latitude] forKey:@"latitude"];
-				[imageContext setValue:[NSString stringWithFormat:@"%f", longitude] forKey:@"longitude"];
-				[imageArray addObject:(NSManagedObjectContext *)imageContext];
+//				[imageContext setValue:[NSString stringWithFormat:@"%f", latitude] forKey:@"latitude"];
+//				[imageContext setValue:[NSString stringWithFormat:@"%f", longitude] forKey:@"longitude"];
+				[self.imageArray addObject:(NSManagedObjectContext *)imageContext];
 			}
 			
-			[self mapViewUpdateLat:loc.latitude andLon:loc.longitude];
+//			[self mapViewUpdateLat:loc.latitude andLon:loc.longitude];
 		}
 	} else {
 		Debug(@"diaryData is not nil==============================================");
@@ -478,15 +1177,15 @@
 				latitude = [[imageContext valueForKey:@"latitude"] doubleValue];
 				longitude = [[imageContext valueForKey:@"longitude"] doubleValue];
 				
-				[self mapViewUpdateLat:latitude andLon:longitude];
+//				[self mapViewUpdateLat:latitude andLon:longitude];
 				setCoord = YES;
 				break;
 			}
 		}
 		
-		if (!setCoord) {
-			[self mapViewUpdateLat:loc.latitude andLon:loc.longitude];
-		}
+//		if (!setCoord) {
+//			[self mapViewUpdateLat:loc.latitude andLon:loc.longitude];
+//		}
 		isLocation = YES;
 		wasFound = YES;
 //		Debug(@"setDiaryDataFields : lat = %f. lon = %f", shareLoc.latitude, shareLoc.longitude);
@@ -495,15 +1194,18 @@
 		
 		
 	}
-	[locManager stopUpdatingLocation];
+    reversGeo = [[MKReverseGeocoder alloc] initWithCoordinate:shareLoc];
+    reversGeo.delegate = self;
+    [reversGeo start];
+//	[locManager stopUpdatingLocation];
 
 	
-	[activityIndicator stopAnimating];
-	[cameralButton setTitle:@"사진" forState:UIControlStateNormal];
+//	[activityIndicator stopAnimating];
+//	[cameralButton setTitle:@"사진" forState:UIControlStateNormal];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-	[activityIndicator stopAnimating];
+//	[activityIndicator stopAnimating];
 	
 	Debug(@"Error = %@, %d", error, [error code]);
 	switch([error code])
@@ -525,8 +1227,10 @@
 	}
 	
 	isLocation = NO;
+    [locManager stopUpdatingLocation];
 }
 
+/*
 - (void)mapViewUpdateLat:(float)lat andLon:(float)lon {
 	Debug(@"mapViewUpdateLat start %f, %f", lat, lon);
 	MKCoordinateRegion region;
@@ -576,7 +1280,9 @@
 //	}
 	Debug(@"mapViewUpdateLat end");
 }
-
+*/
+ 
+/*
 - (IBAction)viewLargeMap {
 	Debug(@"viewLargeMap : lat = %f. lon = %f", latitude,longitude);
 	
@@ -584,7 +1290,7 @@
 	[self.navigationController pushViewController:mapViewController animated:YES];
 }
 
-/*
+
 -(NSData*) geotagImage:(UIImage*)image withLocation:(CLLocation*)imageLocation {
     NSData* jpegData =  UIImageJPEGRepresentation(image, 0.8);
     EXFJpeg* jpegScanner = [[EXFJpeg alloc] init];
@@ -789,7 +1495,7 @@
 	
     CGSize kbSize = [[info objectForKey:UIKeyboardBoundsUserInfoKey] CGRectValue].size;
 	
-	UIButton *doneButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 50, self.view.frame.size.height - 242, 48.0, 25.0)];
+	doneButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 50, self.view.frame.size.height - 242, 48.0, 25.0)];
 
 	[doneButton setBackgroundImage:[UIImage imageNamed:@"btnDismissKeyboard.png"] forState:UIControlStateNormal];	
 	[doneButton addTarget:self action:@selector(dismissKeyboard:) forControlEvents:UIControlEventTouchDown];
@@ -797,7 +1503,8 @@
 	[self.view addSubview:doneButton];
 	[doneButton release];
 
-    [scrollView setContentOffset:CGPointMake(0.0, kbSize.height) animated:YES];
+    [scrollView setContentOffset:CGPointMake(0.0, kbSize.height - 80) animated:YES];
+    self.contentView.frame = CGRectMake(14, 148, 291, 210);
 	
     keyboardShown = YES;
 }
@@ -821,7 +1528,8 @@
 	
     // Reset the height of the scroll view to its original value
 	[scrollView setContentOffset:CGPointMake(0.0, 0.0) animated:YES];
-	
+	self.contentView.frame = CGRectMake(14, 148, 291, 260);
+    [doneButton removeFromSuperview];
     keyboardShown = NO;
 }
 
@@ -838,6 +1546,23 @@
 
 	
 	return dateFormatter;
+}
+
+#pragma mark -
+#pragma mark IBAction
+
+- (IBAction) refreshWeatherClicked {
+	Debug(@"refreshWeatherClicked");
+	if (isGetWeatherEnd) {
+		isGetWeatherEnd = NO;
+	}
+//	isFindLocation = YES;
+	
+	if (postalCode != nil) {
+		[self getWOEID];
+	} else {
+		[locManager startUpdatingLocation];
+	}
 }
 
 #pragma mark -
@@ -874,11 +1599,16 @@
 	@dynamic child;
 	*/
 	
-//	imageSet = [[NSMutableSet alloc] initWithArray:imageArray];
+//	diaryData.image = [[NSMutableSet alloc] initWithArray:imageArray];
 	
 	diaryData.tag = self.titleField.text;
 	diaryData.content = self.contentView.text;
-	
+    diaryData.reverseAddr = self.locField.text;
+    diaryData.latitude = [NSNumber numberWithDouble:latitude];
+    diaryData.longitude = [NSNumber numberWithDouble:longitude];
+    diaryData.weatherDesc = self.weatherDesc.text;
+    diaryData.weatherIcon = self.wIconName;
+    
 	if (!editmode) {
 		diaryData.writedate = [NSDate date];
 		
@@ -917,8 +1647,8 @@
 			[managedObjectContext deleteObject:oldImage];
 		}
 		
-		NSSet *imageSet = [[NSSet alloc] initWithArray:imageArray];
-		[diaryData addImage:imageSet];
+		NSSet *imageSet = [[NSSet alloc] initWithArray:self.imageContextArray];
+		[diaryData setValue:imageSet forKey:@"image"];
 		
 		[imageSet release];
 		
@@ -949,7 +1679,7 @@
 	
 	
 	Debug("Save 3333 - 2");
-	diaryData.thumbnailImage = photoZone.image;
+	diaryData.thumbnailImage = self.thumbnailView.image;
 	Debug("Save 4444 : imageArray.count = %d", [imageArray count]);
 	NSError *error = nil;
 	if (![context save:&error]) {
@@ -983,6 +1713,7 @@
 		[delegate reloadTableView:newDateString];
 	}
 	
+    [locManager stopUpdatingLocation];
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -992,7 +1723,7 @@
 //		newDateString = [diaryData valueForKey:@"sectionDate"];
 //		[delegate reloadTableView:newDateString];
 //	}
-	
+	[locManager stopUpdatingLocation];
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -1035,9 +1766,8 @@
 }
 
 - (void)viewDidUnload {
-	self.testLabel = nil;
 	self.photoZone  = nil;
-	self.photoFrame  = nil;
+    self.thumbnailView = nil;
 	self.calendarViewController  = nil;
 	//	[saveButton release];
 	//	[closeViewButton release];
@@ -1051,7 +1781,6 @@
 	//	[imageData release];
 	self.activityIndicator   = nil;
 	
-	self.mapView   = nil;
 	self.geoTaggedImage   = nil;
 	self.locManager   = nil;
 	
@@ -1066,6 +1795,8 @@
 	
 	self.photoSlideController   = nil;
 	self.imageContext = nil;
+    
+    self.doneButton = nil;
 
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -1073,9 +1804,8 @@
 }
 
 - (void)dealloc {
-	[testLabel release];
 	[photoZone release];
-	[photoFrame release];
+    [thumbnailView release];
 	[calendarViewController release];
 //	[saveButton release];
 //	[closeViewButton release];
@@ -1089,11 +1819,11 @@
 //	[imageData release];
 	[activityIndicator release];
 	
-	[mapView release];
 	[geoTaggedImage release];
 	[locManager release];
 	
 	[imageArray release];
+    [imageContextArray release];
 	[childData release];
 	[diaryData release];
 	
@@ -1104,7 +1834,33 @@
 	
 	[photoSlideController release];
 	[imageContext release];
-	[delegate release];
+    
+    [wIconName release];
+    
+    [reverseAddr release];
+	[country release];
+	[administrativeArea release];
+	[subAdministrativeArea release];
+	[locality release];
+	[subLocality release];
+	[thoroughfare release];
+	[subThoroughfare release];
+	[postalCode release];
+    
+    [locField release];
+    
+    [weatherIcon release];
+	[tempHL release];
+	[currCondition release];
+	[currTemp release];
+	[city release];
+	[lowTemp release];
+	[highTemp release];
+	[refreshWeather release];
+    [weatherDesc release];
+    [dateTime release];
+    
+    [doneButton release];
 
 	[super dealloc];
 }

@@ -61,6 +61,7 @@ static BOOL IsLeapYear(NSInteger year)
     _month = month;
     _day = day;
     
+    /*
 	jeulgi = [NSDictionary dictionaryWithObjectsAndKeys:@"입춘",@"2/4",@"우수",@"2/18",@"경칩",@"3/5",@"춘분",@"3/20",@"청명",@"4/4",@"곡우",@"4/20",
 			  @"입하",@"5/5",@"소만",@"5/21",@"망종",@"6/5",@"하지",@"6/21",@"소서",@"7/7",@"대서",@"7/22",
 			  @"입추",@"8/7",@"처서",@"8/23",@"백로",@"9/7",@"추분",@"9/23",@"한로",@"10/8",@"상강",@"10/23",
@@ -79,7 +80,7 @@ static BOOL IsLeapYear(NSInteger year)
 	if (_todayJeulgi == NULL) {
 		_todayJeulgi = @"";
 	}
-	
+	*/
     return self;
 }
 
@@ -201,9 +202,11 @@ static BOOL IsLeapYear(NSInteger year)
     return _day;
 }
 
+/*
 - (NSString *)todayJeulgi {
 	return _todayJeulgi;
 }
+*/
 
 - (BOOL)isTheLastDayOfTheYear { return _month == 12 && _day == 31; }
 - (BOOL)isTheFirstDayOfTheYear { return _month == 1 && _day == 1; }

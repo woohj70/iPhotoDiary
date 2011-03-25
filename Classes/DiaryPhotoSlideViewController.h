@@ -30,6 +30,8 @@
 	UIButton *mapButton;
 	UIButton *satButton;
 	UIButton *hybButton;
+    
+    UIImageView *bottomView;
 }
 
 @property(nonatomic, retain) DiaryData *diaryData;
@@ -44,6 +46,8 @@
 @property(nonatomic, retain) IBOutlet UIButton *mapButton;
 @property(nonatomic, retain) IBOutlet UIButton *satButton;
 @property(nonatomic, retain) IBOutlet UIButton *hybButton;
+
+@property(nonatomic, retain) IBOutlet UIImageView *bottomView;
 
 - (IBAction)mapViewButtonClicked;
 

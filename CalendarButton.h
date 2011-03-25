@@ -19,6 +19,7 @@
 	NSArray *eventArray;
 	NSMutableDictionary *anniversaryDic;
 	NSArray *diaryArray;
+    NSString *todayJulgi;
 	
 //	UILabel *lunarLabel;
 }
@@ -29,5 +30,7 @@
 @property(nonatomic, retain) NSArray *eventArray;
 @property(nonatomic, retain) NSMutableDictionary *anniversaryDic;
 @property(nonatomic, retain) NSArray *diaryArray;
+
+@property(nonatomic, copy) NSString *todayJulgi;
 
 @end

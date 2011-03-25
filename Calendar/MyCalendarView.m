@@ -626,8 +626,10 @@ static int tterms[24] =
         
         if (julgiStr == nil || [julgiStr isEqualToString:@""]) {
             header = [header stringByAppendingFormat:@"%d/%d", lDateButton.lunarDate.lunarMonth, lDateButton.lunarDate.lunarDay];
+            lDateButton.todayJulgi = @"";
         } else {
             header = [header stringByAppendingString:julgiStr];
+            lDateButton.todayJulgi = julgiStr;
         }
         
         //		NSString *header = [lDateButton.klDate todayJeulgi] != @""?[lDateButton.klDate todayJeulgi] : [NSString stringWithFormat:@"%d/%d", lDateButton.lunarDate.lunarMonth, lDateButton.lunarDate.lunarDay];

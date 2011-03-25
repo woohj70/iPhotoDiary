@@ -48,7 +48,7 @@
 	Debug(@"dateLabel.retainCount = %d", [dateLabel retainCount]);	
 	
 	closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-	closeButton.frame = CGRectMake(250, 200, 60, 30);
+	closeButton.frame = CGRectMake(268, 7, 25, 25);
 	[closeButton setBackgroundImage:[UIImage imageNamed:@"btnClose"] forState:UIControlStateNormal];
 	closeButton.backgroundColor = [UIColor darkGrayColor];
 	
@@ -57,7 +57,7 @@
 	
 	UITextView *contentView = [[UITextView alloc] initWithFrame:CGRectMake(5, 35, 250, 180)];
 	contentView.font = [UIFont systemFontOfSize:14];
-	contentView.textColor = [UIColor whiteColor];
+	contentView.textColor = [UIColor blackColor];
 	contentView.editable = NO;
 	contentView.backgroundColor = [UIColor clearColor];
 	
@@ -105,7 +105,7 @@
 	contentView.text = [NSString stringWithFormat:@"음력 단기 %d년 %d월 %d일\n%@년 %@월 %@일 %@\n절기 : %@\n\n%@", 
 	 [lunarDate yearDangi], [lunarDate lunarMonth], [lunarDate lunarDay],
 	 [lunarDate currentYearGapjaChinese],[lunarDate monthOfYearGapjaChinese],[lunarDate dayOfWeekGapjaChinese],
-	 yoondal,[date todayJeulgi],eventname];
+	 yoondal,calButton.todayJulgi,eventname];
 	
 	
 	[self addSubview:contentView];

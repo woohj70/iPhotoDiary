@@ -1529,7 +1529,11 @@
     // Reset the height of the scroll view to its original value
 	[scrollView setContentOffset:CGPointMake(0.0, 0.0) animated:YES];
 	self.contentView.frame = CGRectMake(14, 148, 291, 260);
-    [doneButton removeFromSuperview];
+    
+//    if (activeView != nil) {
+//		[doneButton removeFromSuperview];
+//	}
+    
     keyboardShown = NO;
 }
 

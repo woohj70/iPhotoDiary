@@ -576,6 +576,7 @@
 		E74AFAF113389AB80074A411 /* 12@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E74AFAE513389AB80074A411 /* 12@2x.png */; };
 		E74AFAF41338A1BA0074A411 /* female@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E74AFAF21338A1BA0074A411 /* female@2x.png */; };
 		E74AFAF51338A1BA0074A411 /* male@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E74AFAF31338A1BA0074A411 /* male@2x.png */; };
+		E753A94D13809D2700F5D11E /* infoview_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E753A94C13809D2700F5D11E /* infoview_background@2x.png */; };
 		E7C42FDF133919B200F36E37 /* diarywrite_background.png in Resources */ = {isa = PBXBuildFile; fileRef = E7C42FDD133919B200F36E37 /* diarywrite_background.png */; };
 		E7C42FE0133919B200F36E37 /* diarywrite_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7C42FDE133919B200F36E37 /* diarywrite_background@2x.png */; };
 		E7C42FE51339212000F36E37 /* btnCamView.png in Resources */ = {isa = PBXBuildFile; fileRef = E7C42FE11339212000F36E37 /* btnCamView.png */; };
@@ -1619,6 +1620,7 @@
 		E74AFAE513389AB80074A411 /* 12@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "12@2x.png"; path = "images/newimages/icon/12@2x.png"; sourceTree = "<group>"; };
 		E74AFAF21338A1BA0074A411 /* female@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "female@2x.png"; path = "images/newimages/female@2x.png"; sourceTree = SOURCE_ROOT; };
 		E74AFAF31338A1BA0074A411 /* male@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "male@2x.png"; path = "images/newimages/male@2x.png"; sourceTree = SOURCE_ROOT; };
+		E753A94C13809D2700F5D11E /* infoview_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "infoview_background@2x.png"; sourceTree = SOURCE_ROOT; };
 		E7C42FDD133919B200F36E37 /* diarywrite_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = diarywrite_background.png; path = images/newimages/diarywrite_background.png; sourceTree = SOURCE_ROOT; };
 		E7C42FDE133919B200F36E37 /* diarywrite_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "diarywrite_background@2x.png"; path = "images/newimages/diarywrite_background@2x.png"; sourceTree = SOURCE_ROOT; };
 		E7C42FE11339212000F36E37 /* btnCamView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btnCamView.png; path = images/newimages/btnCamView.png; sourceTree = SOURCE_ROOT; };
@@ -1860,6 +1862,7 @@
 		421B105A11D64E240085219E /* newimages */ = {
 			isa = PBXGroup;
 			children = (
+				E753A94C13809D2700F5D11E /* infoview_background@2x.png */,
 				E7C43051133A76B100F36E37 /* btnEmailView.png */,
 				E7C43052133A76B200F36E37 /* btnEmailView@2x.png */,
 				E7C43053133A76B200F36E37 /* btnShareView.png */,
@@ -3480,6 +3483,7 @@
 				E7C43058133A76B200F36E37 /* btnShareView@2x.png in Resources */,
 				E7C43068133C5DD300F36E37 /* Default@2x.png in Resources */,
 				E7C43069133C5DD300F36E37 /* icon@2x.png in Resources */,
+				E753A94D13809D2700F5D11E /* infoview_background@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
